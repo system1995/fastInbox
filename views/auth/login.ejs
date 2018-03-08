@@ -1,0 +1,27 @@
+<div class="container">
+  <% if (errors) {%>
+  <% errors.forEach(function (error) { %>
+  <span style="color: red"> <%= __(error) %> </span>
+  <% }) %>
+  <% } %>
+  </br></br>
+  <form class="form-horizontal" action="/auth/local" method="POST">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address or UserName</label>
+      <input type="email" class="form-control" id="identifier" name="identifier" aria-describedby="emailHelp" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <% if (Object.keys(providers).length) {%>
+  <h4>You can also use one of these strategies...</h4>
+
+  <% Object.keys(providers).forEach(function (key) { %>
+  <a href="/auth/<%= providers[key].slug %>" role="button"><%= providers[key].name %></a>
+  <% }) %>
+  <% } %>
+  <br><a href="/register" class="text-center new-account">Create an account </a>
+</div>

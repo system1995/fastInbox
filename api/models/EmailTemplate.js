@@ -1,0 +1,28 @@
+/**
+ * EmailTemplate.js
+ *
+ * @description :: TODO: You might write a short summary of how this model works and what it represents here.
+ * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
+ */
+
+module.exports = {
+  connection:'mongodbServer',
+  attributes: {
+    id : {
+      type: 'integer',
+      autoIncrement: true,
+      primaryKey: true
+    },
+    name : {
+      type: 'string',
+    },
+    category : {
+      type: 'string',
+      enum: ['trade','lead Opportunity','organization','task','project'],
+      defaultsTo: 'trade'
+    },
+    description : {
+      type: 'string',
+    },
+  }
+};
