@@ -31,9 +31,9 @@ var AuthController = {
    * @param {Object} res
    */
   login: function (req, res) {
+    if(req.user) res.redirect('/dashboard');
     var strategies = sails.config.passport
       , providers  = {};
-
     // Get a list of available providers for use in your templates.
     Object.keys(strategies).forEach(function (key) {
       if (key === 'local') {
@@ -69,10 +69,10 @@ var AuthController = {
    */
   logout: function (req, res) {
     req.logout();
-    
+
     // mark the user as logged out for auth purposes
     req.session.authenticated = false;
-    
+
     res.redirect('/');
   },
 
@@ -125,7 +125,6 @@ var AuthController = {
    */
   callback: function (req, res) {
     function tryAgain (err) {
-
       // Only certain error messages are returned via req.flash('error', someError)
       // because we shouldn't expose internal authorization errors to the user.
       // We do return a generic error and the original request body.
@@ -164,10 +163,10 @@ var AuthController = {
         if (err) {
           return tryAgain(err);
         }
-        
+
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
         req.session.authenticated = true
-        
+
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
         res.redirect('/');

@@ -60,4 +60,14 @@ module.exports.routes = {
   /***************Dashboard*************************/
   '/': 'DashboardController.index',
   '/dashboard': 'DashboardController.index',
+  /***************Subscribers*************************/
+  '/subscribers': 'SubscriberController.index',
+  '/subscribers/new': 'SubscriberController.new',
+  '/subscribers/show': 'SubscriberController.show',
+  '/subscribers/edit': 'SubscriberController.edit',
+  '/subscribers/destroy': 'SubscriberController.destroy',
+  'post /subscribers/create': 'SubscriberController.create',
+  'post /subscribers/update': 'SubscriberController.update',
+
+
 };

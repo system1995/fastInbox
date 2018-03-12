@@ -6,8 +6,7 @@ var User = {
     username  : { type: 'string', unique: true },
     email     : { type: 'email',  unique: true },
     passports : { collection: 'Passport', via: 'user' },
-    //role : {type: 'string', enum: ['admin', 'manager', 'customer'], defaultsTo: 'Customer'},
+    role : {type: 'string', enum: ['admin', 'manager', 'customer'], defaultsTo: 'customer'},
   }
 };
-
 module.exports = User;

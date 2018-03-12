@@ -29,6 +29,16 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/font/css/fa-brands.css">
+    <link rel="stylesheet" href="/font/css/fa-brands.min.css">
+    <link rel="stylesheet" href="/font/css/fa-regular.css">
+    <link rel="stylesheet" href="/font/css/fa-regular.min.css">
+    <link rel="stylesheet" href="/font/css/fa-solid.css">
+    <link rel="stylesheet" href="/font/css/fa-solid.min.css">
+    <link rel="stylesheet" href="/font/css/fontawesome-all.css">
+    <link rel="stylesheet" href="/font/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/font/css/fontawesome.css">
+    <link rel="stylesheet" href="/font/css/fontawesome.min.css">
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap-grid.css">
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap-grid.min.css">
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap-reboot.css">
@@ -36,13 +46,68 @@
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap.css">
     <link rel="stylesheet" href="/styles/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/style.css">
     <!--STYLES END-->
   </head>
 
   <body>
     <%- body %>
+    <!--Nave-side of dashboard-->
+    <%if (typeof user != "undefined") { %>
+    <div class="nav-side-menu">
+      <div class="brand">FastInbox - <%= user.role+" "+user.username %>
+        <a href="/logout" class="fas fa-sign-out-alt">Log out</a>
+      </div>
+
+      <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+      <div class="menu-list">
+        <ul id="menu-content" class="menu-content collapse out">
+          <li <%if (req.url=="/") { %> class="active"<%}%>>
+            <a href="/">
+              <i class="fa fa-tachometer-alt fa-lg"></i> Dashboard
+            </a>
+          </li>
+
+          <li <%if (req.url.includes("/subscribers")) { %> class="active"<%}%>>
+            <a href="/subscribers">
+              <i class="fa fa-user fa-lg"></i> Subscribers
+            </a>
+          </li>
+
+          <li data-toggle="collapse" data-target="#service" class="collapsed">
+            <a href="#"><i class="fa fa-globe fa-list"></i> Lists <span class="fa fa fa-angle-down arrow"></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="service">
+            <li>Lists</li>
+            <li>Segments</li>
+            <li>Process invalid emails</li>
+          </ul>
 
 
+          <li data-toggle="collapse" data-target="#new" class="collapsed">
+            <a href="#"><i class="fa fa fa-wrench fa-lg"></i> Tools <span class="fa fa fa-angle-down arrow"></span></a>
+          </li>
+          <ul class="sub-menu collapse" id="new">
+            <li>Import subscribers</li>
+            <li>Export subscribers</li>
+          </ul>
+
+
+          <li>
+            <a href="#">
+              <i class="fa fa-envelope-square fa-lg"></i> Template Email
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa fa-hourglass-end fa-lg"></i> Campaign
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <%} %>
 
     <!--
         Client-side Templates
@@ -95,10 +160,12 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/jquery/jquery-3.3.1.min.js"></script>
     <script src="/js/bootstrap/bootstrap.bundle.js"></script>
     <script src="/js/bootstrap/bootstrap.bundle.min.js"></script>
     <script src="/js/bootstrap/bootstrap.js"></script>
     <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/vuejs/vue.min.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
