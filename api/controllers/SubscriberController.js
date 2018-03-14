@@ -7,19 +7,26 @@
 
 module.exports = {
   index: function (req, res) {
-    Subscriber.find(function(err, subscribers){
+    Subscriber.find().populate('lists').exec(function(err, subscribers){
       if (err) { return res.serverError(err); }
       res.view('page/subscribers/index',{model: subscribers});
     });
   },
 
   new: function (req, res) {
-    res.view('page/subscribers/new');
+    List.find(function(err, lists){
+      if (err) { return res.serverError(err); }
+      Parameter.find({model:'audience'},function (err,audiences) {
+        if (err) { return res.serverError(err); }
+        res.view('page/subscribers/new',{lists: lists,audiences:audiences});
+      })
+    });
   },
 
   create: function(req,res) {
     var params = _.extend(req.query || {}, req.params || {}, req.body || {});
-    Subscriber.create(params, function userCreated (err, createdSubscriber) {
+    delete params['fields'];
+    Subscriber.create(params, function listCreated (err, createdSubscriber) {
       if (err)  return res.serverError(err);
       res.redirect('/subscribers');
     });
@@ -45,11 +52,19 @@ module.exports = {
   edit: function (req,res) {
     var id = req.param('id');
     if (!id) return res.send("No id specified.",500);
-    Subscriber.findOne({id:id}).exec(function (err, subscriber){
+    Subscriber.findOne({id:id}).populate('lists').exec(function (err, subscriber){
       if (err) {
         return res.serverError(err);
       }
-      return res.view('page/subscribers/edit',{model:subscriber});
+      List.find(function (err, lists) {
+        if (err) {
+          return res.serverError(err);
+        }
+        Parameter.find({model:'audience'},function (err,audiences) {
+          if (err) { return res.serverError(err); }
+          res.view('page/subscribers/edit',{model:subscriber,lists: lists,audiences:audiences});
+        })
+      });
     });
   },
 
@@ -62,8 +77,6 @@ module.exports = {
     });
   },
 
-
-
   destroy: function (req,res) {
     var id = req.param('id');
     Subscriber.destroy({id:id}).exec(function (err){
@@ -71,9 +84,5 @@ module.exports = {
       return res.redirect("/subscribers");
     });
   }
-
-
-
-
 };
 

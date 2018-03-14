@@ -19,6 +19,7 @@ module.exports = {
     },
     lists : {
       collection: 'List',
+      via: 'subscribers',
     },
 
   }

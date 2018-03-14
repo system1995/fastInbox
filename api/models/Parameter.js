@@ -8,20 +8,19 @@
 module.exports = {
   connection:'mongodbServer',
   attributes: {
-    id : {
-      type: 'integer',
-      autoIncrement: true,
-      primaryKey: true
-    },
+
     model : {
       type: 'string',
     },
     key : {
       type: 'string',
     },
-    /*value : {
+    values : {
       type: 'array',
-    },*/
+    },
+    multiple : {
+      type: 'boolean',
+    },
   }
 };
 

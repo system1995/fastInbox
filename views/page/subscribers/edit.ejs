@@ -2,7 +2,7 @@
 <div class="container" id="page-content">
 
   <div class="col-md-12">
-    <h4>Edit Subscribers</h4>
+    <h4>Edit Subscriber</h4>
   </div>
 
   <form action="/subscriber/update?id=<%= model.id %>" method="POST">
@@ -21,6 +21,58 @@
       <label for="exampleInputEmail1">Phone number </label>
       <input type="text" class="form-control" id="phoneNumber"  name="phoneNumber" placeholder="Enter phone number" value="<%= model.phoneNumber %>">
     </div>
+
+      <% for(var key in model) {
+        if(key.startsWith('ex_'))
+        { %>
+    <div class="form-group">
+      <label for="exampleInputEmail1"> <%=key.slice(3)%> </label>
+      <input type="text" class="form-control" id="<%= key %>"  name="<%= key %>" placeholder="Enter phone number" value="<%= model[key] %>">
+    </div>
+       <%}}%>
+
+    <div class="control-group" id="fields">
+      <label class="control-label" for="field1">Add custom field </label>
+      <div class="controls">
+        <div class="entry input-group col-xs-3">
+          <input class="form-control addedField" name="fields[]" type="text" placeholder="Field name" disabled/>
+          <input class="form-control valueField" name="fields[]" type="text" placeholder="Value of the field" disabled/>
+          <span class="input-group-btn">
+                              <button class="btn btn-success btn-add" type="button">
+                                  <span class="fas fa-plus"></span>
+                              </button>
+                          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="exampleInputEmail1">Lists </label>
+      <select class="form-control" id="lists[]" name="lists[]" multiple="multiple">
+        <% _.each(lists, function (list) { %>
+        <option value="<%= list.id %>" <% if(_.pluck(model.lists, 'id').includes(list.id)){%> selected<%}%> ><%= list.name %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <h4> Audience </h4>
+    <% _.each(audiences, function (audience) { %>
+    <div class="form-group">
+      <label for="exampleInputEmail1"> <%= audience.key %> </label>
+      <%if(audience.values ){%>
+      <select class="form-control" id="<%= audience.key %>" name="<%= audience.key %>"
+        <%if(audience.multiple == true) {%> multiple="multiple"  <%}%> >
+        <% for (val of audience.values) { %>
+        <option value="<%= val %>" <%if( model[audience.key].includes(val)) {%> selected <%}%> > <%= val %> </option>
+        <%}%>
+      </select>
+      <% } else{ %>
+      <input type="text" class="form-control" id="<%= audience.key %>"  name="<%= audience.key %>" placeholder="Enter <%= audience.key %>"
+        <%if( model[audience.key]) {%> value="<%= model[audience.key] %>" <%}%> >
+      <%}%>
+    </div>
+    <%})%>
+
 
     <button type="submit" class="btn btn-primary">Save</button>
   </form>

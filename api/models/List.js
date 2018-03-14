@@ -8,13 +8,12 @@
 module.exports = {
   connection:'mongodbServer',
   attributes: {
-    id : {
-      type: 'integer',
-      autoIncrement: true,
-      primaryKey: true
-    },
     name : {
       type: 'string',
+    },
+    subscribers : {
+      collection: 'Subscriber',
+      via :'lists',
     },
   }
 };

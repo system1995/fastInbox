@@ -69,5 +69,13 @@ module.exports.routes = {
   'post /subscribers/create': 'SubscriberController.create',
   'post /subscribers/update': 'SubscriberController.update',
 
+  /***************Lists*************************/
+  '/Lists': 'ListController.index',
+  '/Lists/new': 'ListController.new',
+  '/Lists/show': 'ListController.show',
+  '/Lists/edit': 'ListController.edit',
+  '/Lists/destroy': 'ListController.destroy',
+  'post /Lists/create': 'ListController.create',
+  'post /Lists/update': 'ListController.update',
 
 };
