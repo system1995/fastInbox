@@ -63,19 +63,30 @@ module.exports.routes = {
   /***************Subscribers*************************/
   '/subscribers': 'SubscriberController.index',
   '/subscribers/new': 'SubscriberController.new',
-  '/subscribers/show': 'SubscriberController.show',
   '/subscribers/edit': 'SubscriberController.edit',
   '/subscribers/destroy': 'SubscriberController.destroy',
   'post /subscribers/create': 'SubscriberController.create',
   'post /subscribers/update': 'SubscriberController.update',
 
   /***************Lists*************************/
-  '/Lists': 'ListController.index',
-  '/Lists/new': 'ListController.new',
-  '/Lists/show': 'ListController.show',
-  '/Lists/edit': 'ListController.edit',
-  '/Lists/destroy': 'ListController.destroy',
-  'post /Lists/create': 'ListController.create',
-  'post /Lists/update': 'ListController.update',
+  '/lists': 'ListController.index',
+  '/lists/new': 'ListController.new',
+  '/lists/edit': 'ListController.edit',
+  '/lists/destroy': 'ListController.destroy',
+  'post /lists/create': 'ListController.create',
+  'post /lists/update': 'ListController.update',
+
+  /***************Import*************************/
+  '/imports': 'ImportController.index',
+  '/imports/new': 'ImportController.new',
+  '/imports/destroy': 'ImportController.destroy',
+  'post /imports/new': 'ImportController.new',
+  'post /imports/create': 'ImportController.create',
+
+  /***************Export*************************/
+  '/exports': 'ExportController.index',
+  '/exports/new': 'ExportController.new',
+  '/exports/destroy': 'ExportController.destroy',
+  'post /exports/create': 'ExportController.create',
 
 };

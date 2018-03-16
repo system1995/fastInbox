@@ -63,7 +63,7 @@
       <select class="form-control" id="<%= audience.key %>" name="<%= audience.key %>"
         <%if(audience.multiple == true) {%> multiple="multiple"  <%}%> >
         <% for (val of audience.values) { %>
-        <option value="<%= val %>" <%if( model[audience.key].includes(val)) {%> selected <%}%> > <%= val %> </option>
+        <option value="<%= val %>" <%if(model[audience.key]){if(model[audience.key].includes(val)) {%> selected <%}}%> > <%= val %> </option>
         <%}%>
       </select>
       <% } else{ %>

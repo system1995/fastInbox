@@ -8,11 +8,6 @@
 module.exports = {
   connection:'mongodbServer',
   attributes: {
-    id : {
-      type: 'integer',
-      autoIncrement: true,
-      primaryKey: true
-    },
     date : {
       type: 'datetime',
     },

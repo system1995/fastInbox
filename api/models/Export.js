@@ -11,12 +11,9 @@ module.exports = {
     name : {
       type: 'string',
     },
-    status : {
-      type: 'integer',
-    },
     lists : {
       collection: 'List',
-      via : 'imports',
+      via : 'exports',
     },
     segments : {
       collection: 'Segment',

@@ -1,7 +1,7 @@
 /**
- * SubscriberController
+ * ListController
  *
- * @description :: Server-side logic for managing subscriber
+ * @description :: Server-side logic for managing list
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 

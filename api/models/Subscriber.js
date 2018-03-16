@@ -22,6 +22,11 @@ module.exports = {
       via: 'subscribers',
     },
 
+    beforeDestroy: function(criteria, cb) {
+      Subscriber.find(criteria).exec(function(err, subscriberToDestroy) {
+        subscriberToDestroy.lists.remove();
+      });
+    }
   }
 };
 

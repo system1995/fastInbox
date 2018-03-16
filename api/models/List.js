@@ -15,6 +15,20 @@ module.exports = {
       collection: 'Subscriber',
       via :'lists',
     },
+    imports : {
+      collection: 'Import',
+      via : 'lists',
+    },
+
+    exports : {
+      collection: 'Export',
+      via : 'lists',
+    },
+    beforeDestroy: function(criteria, cb) {
+      List.find(criteria).exec(function(err, listToDestroy) {
+        listToDestroy.subscribers.remove();
+      });
+    }
   }
 };
 
