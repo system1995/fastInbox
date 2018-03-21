@@ -58,10 +58,10 @@ module.exports.connections = {
   ***************************************************************************/
   mongodbServer: {
     adapter: 'sails-mongo',
-    host: 'localhost',
+    host: 'myhealthymap.com',
     port: 27017,
-    // user: 'username',
-    // password: 'password',
+    user: 'root',
+    password: 'fast%402018',
     database: 'fastinbox'
   },
 

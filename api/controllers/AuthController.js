@@ -142,6 +142,8 @@ var AuthController = {
       // These views should take care of rendering the error messages.
       var action = req.param('action');
 
+      res.json(flashError);
+      /*
       switch (action) {
         case 'register':
           res.redirect('/register');
@@ -152,6 +154,7 @@ var AuthController = {
         default:
           res.redirect('/login');
       }
+      */
     }
 
     passport.callback(req, res, function (err, user, challenges, statuses) {
@@ -163,13 +166,13 @@ var AuthController = {
         if (err) {
           return tryAgain(err);
         }
-
         // Mark the session as authenticated to work with default Sails sessionAuth.js policy
-        req.session.authenticated = true
+        req.session.authenticated = true;
 
+        res.json("success");
         // Upon successful login, send the user to the homepage were req.user
         // will be available.
-        res.redirect('/');
+       // res.redirect('/');
       });
     });
   },
