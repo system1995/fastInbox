@@ -7,9 +7,11 @@
 
 module.exports = {
   index: function (req, res) {
-    Subscriber.find().populate('lists').exec(function(err, subscribers){
-      if (err) { return res.serverError(err); }
-      res.view('page/subscribers/index',{model: subscribers});
+    Subscriber.find().populate('lists').exec(function (err, subscribers) {
+      if (err) {
+        return res.serverError(err);
+      }
+      res.view('page/subscribers/index', {subscribers: subscribers});
     });
   },
 
@@ -26,6 +28,7 @@ module.exports = {
   create: function(req,res) {
     var params = _.extend(req.query || {}, req.params || {}, req.body || {});
     delete params['fields'];
+    params['status']='new';
     Subscriber.create(params, function listCreated (err, createdSubscriber) {
       if (err)  return res.serverError(err);
       res.redirect('/subscribers');

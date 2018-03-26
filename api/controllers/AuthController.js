@@ -31,6 +31,7 @@ var AuthController = {
    * @param {Object} res
    */
   login: function (req, res) {
+
     if(req.user) res.redirect('/dashboard');
     var strategies = sails.config.passport
       , providers  = {};
@@ -45,10 +46,10 @@ var AuthController = {
       , slug: key
       };
     });
-
     // Render the `auth/login.ext` view
     res.view({
-      providers : providers
+      layout: false
+    , providers : providers
     , errors    : req.flash('error')
     });
   },

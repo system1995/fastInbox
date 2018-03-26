@@ -1,8 +1,99 @@
-//== Class definition
+var FormControls = function () {
+  //== Private functions
 
+  $.validator.addMethod("regxPhone", function(value, element, regexpr) {
+    return regexpr.test(value);
+  }, "Please enter a valid phone");
+
+  var formSubscriber = function () {
+    $( "#m_form_subscriber" ).validate({
+      // define validation rules
+      rules: {
+        fullName: {
+          required: true,
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        phoneNumber: {
+          required: true,
+          regxPhone: /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/
+        },
+        digits: {
+          required: true,
+          digits: true
+        },
+        creditcard: {
+          required: true,
+          creditcard: true
+        },
+        phone: {
+          required: true,
+          phoneUS: true
+        },
+        option: {
+          required: true
+        },
+        options: {
+          required: true,
+          minlength: 2,
+          maxlength: 4
+        },
+        memo: {
+          required: true,
+          minlength: 10,
+          maxlength: 100
+        },
+
+        checkbox: {
+          required: true
+        },
+        checkboxes: {
+          required: true,
+          minlength: 1,
+          maxlength: 2
+        },
+        radio: {
+          required: true
+        }
+      },
+
+      //display error alert on form submit
+      invalidHandler: function(event, validator) {
+        mApp.scrollTo("#m_form_subscriber");
+        swal({
+          "title": "",
+          "text": "There are some errors in your submission. Please correct them.",
+          "type": "error",
+          "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
+        });
+      },
+
+      submitHandler: function (form) {
+        form[0].submit(); // submit the form
+      }
+    });
+  }
+
+
+
+  return {
+    // public functions
+    init: function() {
+      formSubscriber();
+    }
+  };
+}();
+
+jQuery(document).ready(function() {
+  FormControls.init();
+});
+
+/*
 var FormControls = function () {
     //== Private functions
-    
+
     var demo1 = function () {
         $( "#m_form_1" ).validate({
             // define validation rules
@@ -10,10 +101,10 @@ var FormControls = function () {
                 email: {
                     required: true,
                     email: true,
-                    minlength: 10 
+                    minlength: 10
                 },
                 url: {
-                    required: true 
+                    required: true
                 },
                 digits: {
                     required: true,
@@ -21,11 +112,11 @@ var FormControls = function () {
                 },
                 creditcard: {
                     required: true,
-                    creditcard: true 
+                    creditcard: true
                 },
                 phone: {
                     required: true,
-                    phoneUS: true 
+                    phoneUS: true
                 },
                 option: {
                     required: true
@@ -53,9 +144,9 @@ var FormControls = function () {
                     required: true
                 }
             },
-            
-            //display error alert on form submit  
-            invalidHandler: function(event, validator) {     
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
                 var alert = $('#m_form_1_msg');
                 alert.removeClass('m--hide').show();
                 mApp.scrollTo(alert, -200);
@@ -64,7 +155,7 @@ var FormControls = function () {
             submitHandler: function (form) {
                 //form[0].submit(); // submit the form
             }
-        });       
+        });
     }
 
     var demo2 = function () {
@@ -73,10 +164,10 @@ var FormControls = function () {
             rules: {
                 email: {
                     required: true,
-                    email: true 
+                    email: true
                 },
                 url: {
-                    required: true 
+                    required: true
                 },
                 digits: {
                     required: true,
@@ -84,11 +175,11 @@ var FormControls = function () {
                 },
                 creditcard: {
                     required: true,
-                    creditcard: true 
+                    creditcard: true
                 },
                 phone: {
                     required: true,
-                    phoneUS: true 
+                    phoneUS: true
                 },
                 option: {
                     required: true
@@ -116,14 +207,14 @@ var FormControls = function () {
                     required: true
                 }
             },
-            
-            //display error alert on form submit  
-            invalidHandler: function(event, validator) {     
+
+            //display error alert on form submit
+            invalidHandler: function(event, validator) {
                 mApp.scrollTo("#m_form_2");
 
                 swal({
-                    "title": "", 
-                    "text": "There are some errors in your submission. Please correct them.", 
+                    "title": "",
+                    "text": "There are some errors in your submission. Please correct them.",
                     "type": "error",
                     "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
                 });
@@ -132,7 +223,7 @@ var FormControls = function () {
             submitHandler: function (form) {
                 //form[0].submit(); // submit the form
             }
-        });       
+        });
     }
 
     var demo3 = function () {
@@ -165,7 +256,7 @@ var FormControls = function () {
                     required: true
                 },
                 billing_address_2: {
-                    
+
                 },
                 billing_city: {
                     required: true
@@ -182,14 +273,14 @@ var FormControls = function () {
                     required: true
                 }
             },
-            
-            //display error alert on form submit  
+
+            //display error alert on form submit
             invalidHandler: function(event, validator) {
-                mApp.scrollTo("#m_form_3"); 
+                mApp.scrollTo("#m_form_3");
 
                 swal({
-                    "title": "", 
-                    "text": "There are some errors in your submission. Please correct them.", 
+                    "title": "",
+                    "text": "There are some errors in your submission. Please correct them.",
                     "type": "error",
                     "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
                 });
@@ -198,27 +289,28 @@ var FormControls = function () {
             submitHandler: function (form) {
                 //form[0].submit(); // submit the form
                 swal({
-                    "title": "", 
-                    "text": "Form validation passed. All good!", 
+                    "title": "",
+                    "text": "Form validation passed. All good!",
                     "type": "success",
                     "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
                 });
 
                 return false;
             }
-        });       
+        });
     }
 
     return {
         // public functions
         init: function() {
-            demo1(); 
+            demo1();
             demo2();
-            demo3(); 
+            demo3();
         }
     };
 }();
 
-jQuery(document).ready(function() {    
+jQuery(document).ready(function() {
     FormControls.init();
 });
+*/

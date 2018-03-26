@@ -3,115 +3,115 @@ var FormRepeater = function() {
 
     //== Private functions
     var demo1 = function() {
-        $('#m_repeater_1').repeater({            
+        $('#m_repeater_1').repeater({
             initEmpty: false,
-           
+
             defaultValues: {
                 'text-input': 'foo'
             },
-             
+
             show: function () {
                 $(this).slideDown();
             },
 
-            hide: function (deleteElement) {                
-                $(this).slideUp(deleteElement);                 
-            }   
+            hide: function (deleteElement) {
+                $(this).slideUp(deleteElement);
+            }
         });
     }
 
     var demo2 = function() {
-        $('#m_repeater_2').repeater({            
+        $('#m_repeater_2').repeater({
             initEmpty: false,
-           
+
             defaultValues: {
                 'text-input': 'foo'
             },
-             
+
             show: function() {
-                $(this).slideDown();                               
+                $(this).slideDown();
             },
 
-            hide: function(deleteElement) {                 
+            hide: function(deleteElement) {
                 if(confirm('Are you sure you want to delete this element?')) {
                     $(this).slideUp(deleteElement);
-                }                                
-            }      
+                }
+            }
         });
     }
 
 
     var demo3 = function() {
-        $('#m_repeater_3').repeater({            
+        $('#m_repeater_3').repeater({
             initEmpty: false,
-           
+
             defaultValues: {
                 'text-input': 'foo'
             },
-             
+
             show: function() {
-                $(this).slideDown();                               
+                $(this).slideDown();
             },
 
-            hide: function(deleteElement) {                 
+            hide: function(deleteElement) {
                 if(confirm('Are you sure you want to delete this element?')) {
                     $(this).slideUp(deleteElement);
-                }                                  
-            }      
+                }
+            }
         });
     }
 
     var demo4 = function() {
-        $('#m_repeater_4').repeater({            
+        $('#m_repeater_4').repeater({
             initEmpty: false,
-           
+
             defaultValues: {
                 'text-input': 'foo'
             },
-             
+
             show: function() {
-                $(this).slideDown();                               
+                $(this).slideDown();
             },
 
-            hide: function(deleteElement) {              
-                $(this).slideUp(deleteElement);                                               
-            }      
+            hide: function(deleteElement) {
+                $(this).slideUp(deleteElement);
+            }
         });
     }
 
     var demo5 = function() {
-        $('#m_repeater_5').repeater({            
+        $('#m_repeater_5').repeater({
             initEmpty: false,
-           
+
             defaultValues: {
                 'text-input': 'foo'
             },
-             
+
             show: function() {
-                $(this).slideDown();                               
+                $(this).slideDown();
             },
 
-            hide: function(deleteElement) {              
-                $(this).slideUp(deleteElement);                                               
-            }      
+            hide: function(deleteElement) {
+                $(this).slideUp(deleteElement);
+            }
         });
     }
 
     var demo6 = function() {
-        $('#m_repeater_6').repeater({            
+        $('#m_repeater_6').repeater({
             initEmpty: false,
-           
+
             defaultValues: {
                 'text-input': 'foo'
             },
-             
+
             show: function() {
-                $(this).slideDown();                               
+                $(this).slideDown();
             },
 
-            hide: function(deleteElement) {                  
-                $(this).slideUp(deleteElement);                                                
-            }      
+            hide: function(deleteElement) {
+                $(this).slideUp(deleteElement);
+            }
         });
     }
     return {
@@ -131,4 +131,3 @@ jQuery(document).ready(function() {
     FormRepeater.init();
 });
 
-    

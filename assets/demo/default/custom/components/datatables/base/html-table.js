@@ -3,6 +3,7 @@
 var DatatableHtmlTableDemo = function() {
 	//== Private functions
 
+
 	// demo initializer
 	var demo = function() {
 

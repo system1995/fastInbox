@@ -1,0 +1,17 @@
+<% _.each(audiences, function (audience) { %>
+<div class="form-group m-form__group">
+  <label for="<%= audience.key %>"><%= audience.key %></label>
+  <div class="input-group">
+    <%if(audience.values ){%>
+    <select <%if(audience.multiple == true) {%> multiple=""  <%}%>  class="form-control m-input m-input--air"  id="<%= audience.key %>" name="<%= audience.key %>">
+
+      <% for (val of audience.values) { %>
+      <option value="<%= val %>"><%= val %> </option>
+      <%}%>
+    </select>
+    <% } else{ %>
+    <input class="form-control m-input m-input--air" id="<%= audience.key %>"  name="<%= audience.key %>"  aria-describedby="fullNameHelp" placeholder="Enter <%= audience.key %> " type="text">
+    <%}%>
+  </div>
+</div>
+<%})%>

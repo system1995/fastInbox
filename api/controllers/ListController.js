@@ -9,12 +9,15 @@ module.exports = {
   index: function (req, res) {
     List.find().populate('subscribers').exec(function(err, lists){
       if (err) return res.serverError(err);
-      res.view('page/lists/index',{model: lists});
+      res.view('page/lists/index',{lists: lists});
     });
   },
 
   new: function (req, res) {
-    res.view('page/lists/new');
+    Parameter.find({model:'audience'},function (err,audiences) {
+      if (err) { return res.serverError(err); }
+      res.view('page/lists/new',{audiences:audiences});
+    })
   },
 
   create: function(req,res) {

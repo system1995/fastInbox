@@ -11,7 +11,7 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      res.view('page/imports/index', {model: imports});
+      res.view('page/imports/index', {imports: imports});
     });
   },
 
@@ -21,17 +21,17 @@ module.exports = {
         if (err) {
           return res.serverError(err);
         }
-        res.view('page/imports/new-import', {lists: lists});
+        res.view('page/imports/new-step1', {lists: lists});
       });
     }
     else{
       var params = _.extend(req.query || {}, req.params || {}, req.body || {});
-      req.file('FileUpload').upload({
+      req.file('ImportFile').upload({
         dirname:'../../assets/files/'},function(err,files){
         if (err) return res.serverError(err);
         req.session.import={file:files[0],lists:params['lists[]']};
         var first2Line=module.exports.XLSX2ToJson(files[0].fd)[0];
-        res.view('page/imports/new-mapping',{first2Line:first2Line});
+        res.view('page/imports/new-step2',{first2Line:first2Line});
       });
     }
   },

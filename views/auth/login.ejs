@@ -16,9 +16,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <!-- begin::Head -->
 <head>
   <meta charset="utf-8" />
-  <title>
-    Metronic | Login Page - 1
-  </title>
+  <title><%=typeof title == 'undefined' ? 'New Sails App' : title%></title>
+
   <meta name="description" content="Latest updates and statistic charts">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -191,9 +190,8 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/vendors/base/vendors.bundle.js" type="text/javascript"></script>
 <script src="/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
 <!--end::Base Scripts -->
-<!--begin::Page Snippets -->
-<script src="/snippets/pages/user/login.js" type="text/javascript"></script>
-<!--end::Page Snippets -->
+<script src="/js/auth.js" type="text/javascript"></script>
 </body>
 <!-- end::Body -->
 </html>
+
