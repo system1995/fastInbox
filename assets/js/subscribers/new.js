@@ -24,39 +24,6 @@ var FormControls = function () {
           required: true,
           digits: true
         },
-        creditcard: {
-          required: true,
-          creditcard: true
-        },
-        phone: {
-          required: true,
-          phoneUS: true
-        },
-        option: {
-          required: true
-        },
-        options: {
-          required: true,
-          minlength: 2,
-          maxlength: 4
-        },
-        memo: {
-          required: true,
-          minlength: 10,
-          maxlength: 100
-        },
-
-        checkbox: {
-          required: true
-        },
-        checkboxes: {
-          required: true,
-          minlength: 1,
-          maxlength: 2
-        },
-        radio: {
-          required: true
-        }
       },
 
       //display error alert on form submit
@@ -97,7 +64,12 @@ var FormRepeater = function() {
       },
 
       show: function () {
+        var arr = [];
         $(this).slideDown();
+        $(".valueField").each(function() {
+          var String=$(this).attr("name").substring($(this).attr("name").lastIndexOf("[")+1,$(this).attr("name").lastIndexOf("]"));
+          $(this).attr("name",String);
+        });
       },
 
       hide: function (deleteElement) {

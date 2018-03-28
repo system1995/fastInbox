@@ -3,14 +3,13 @@
   <label for="<%= audience.key %>"><%= audience.key %></label>
   <div class="input-group">
     <%if(audience.values ){%>
-    <select <%if(audience.multiple == true) {%> multiple=""  <%}%>  class="form-control m-input m-input--air"  id="<%= audience.key %>" name="<%= audience.key %>">
-
+    <select <%if(audience.multiple == true) {%> multiple=""  <%}%>  class="form-control m-input m-input--air"  id="<%= audience.key %>" name="<%= audience.key %>" required>
       <% for (val of audience.values) { %>
-      <option value="<%= val %>"><%= val %> </option>
+      <option value="<%= val %>" <%if(typeof model !== 'undefined'){if(model[audience.key]){if(model[audience.key].includes(val)) {%> selected <%}}}%>><%= val %> </option>
       <%}%>
     </select>
     <% } else{ %>
-    <input class="form-control m-input m-input--air" id="<%= audience.key %>"  name="<%= audience.key %>"  aria-describedby="fullNameHelp" placeholder="Enter <%= audience.key %> " type="text">
+    <input class="form-control m-input m-input--air" id="<%= audience.key %>"  name="<%= audience.key %>"  <%if(typeof model !== 'undefined'){if( model[audience.key]) {%> value="<%= model[audience.key] %>" <%}}%>  aria-describedby="fullNameHelp" placeholder="Enter <%= audience.key %>" type="text" required>
     <%}%>
   </div>
 </div>

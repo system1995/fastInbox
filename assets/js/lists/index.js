@@ -26,11 +26,19 @@ var DatatableHtmlTableDemo = function() {
     });
   };
 
+  var deleteModal=function () {
+    /****Delete Modal ****/
+    $('.deleteModal').click(function(evt) {
+      $( "#deleteHref" ).attr( "href", "list/destroy/?id="+$(this).attr('deleteId'));
+    });
+  };
+
   return {
     //== Public functions
     init: function() {
-      // init dmeo
+      // init demo
       demo();
+      deleteModal();
     },
   };
 }();

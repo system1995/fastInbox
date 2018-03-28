@@ -28,7 +28,7 @@ module.exports = {
   create: function(req,res) {
     var params = _.extend(req.query || {}, req.params || {}, req.body || {});
     delete params['fields'];
-    params['status']='new';
+    params['status']='active';
     Subscriber.create(params, function listCreated (err, createdSubscriber) {
       if (err)  return res.serverError(err);
       res.redirect('/subscribers');
@@ -36,12 +36,8 @@ module.exports = {
   },
 
   show: function (req,res) {
-
     var id = req.param('id')
-
     if (!id) return res.send("No id specified.", 500);
-
-
     User.find(id, function userFound(err, user) {
       if(err) return res.sender(err,500);
       if(!user) return res.send("User "+id+" not found", 404);
@@ -65,7 +61,7 @@ module.exports = {
         }
         Parameter.find({model:'audience'},function (err,audiences) {
           if (err) { return res.serverError(err); }
-          res.view('page/subscribers/edit',{model:subscriber,lists: lists,audiences:audiences});
+          res.view('page/subscribers/edit',{subscriber:subscriber,lists: lists,audiences:audiences});
         })
       });
     });
@@ -73,10 +69,16 @@ module.exports = {
 
   update: function(req,res) {
     var id = req.param('id');
+    if (!id) return res.send("No id specified.",500);
     var params = _.extend(req.query || {}, req.params || {}, req.body || {});
-    Subscriber.update(id,params, function userUpdated (err, updatedSubscriber) {
-      if (err)  return res.serverError(err);
-      res.redirect('/subscribers');
+    Subscriber.find({id:id}).exec(function (err,foundSubscriber){
+      Subscriber.destroy({id:id}).exec(function (err){
+        if (err) {return res.negotiate(err);}
+        Subscriber.create(Object.assign(params,{id:id,createdAt:foundSubscriber[0].createdAt,status:foundSubscriber[0].status})).exec(function (err){
+          if (err) {return res.negotiate(err);}
+          return res.redirect("/subscribers");
+        });
+      });
     });
   },
 

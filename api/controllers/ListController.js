@@ -43,7 +43,10 @@ module.exports = {
     if (!id) return res.send("No id specified.",500);
     List.findOne({id:id}).exec(function (err, list){
       if (err) return res.serverError(err);
-      return res.view('page/lists/edit',{model:list});
+      Parameter.find({model:'audience'},function (err,audiences) {
+        if (err) { return res.serverError(err); }
+        res.view('page/lists/edit',{list:list,audiences:audiences});
+      })
     });
   },
 

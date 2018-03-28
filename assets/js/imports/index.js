@@ -92,6 +92,6 @@ var DatatableHtmlTableDemo = function() {
 }();
 
 jQuery(document).ready(function() {
-  BootstrapTouchspin.init();
+  //BootstrapTouchspin.init();
   DatatableHtmlTableDemo.init();
 });

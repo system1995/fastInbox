@@ -40,7 +40,6 @@ var DatatableHtmlTableDemo = function() {
         // callback function support for column rendering
         template: function(row) {
           var status = {
-            'new': {'title': 'New', 'class': 'm-badge--default'},
             'blocked': {'title': 'Blocked', 'class': 'm-badge--warning'},
             'active': {'title': 'Active', 'class': ' m-badge--success'},
             'invalid': {'title': 'Invalid', 'class': ' m-badge--danger'},
@@ -55,14 +54,21 @@ var DatatableHtmlTableDemo = function() {
   $('#m_form_status').on('change', function() {
     datatable.search($(this).val().toLowerCase(), 'Status');
   });
-
   $('#m_form_status').selectpicker();
+
 };
+  var deleteModal=function () {
+    /****Delete Modal ****/
+    $('.deleteModal').click(function(evt) {
+      $( "#deleteHref" ).attr( "href", "subscriber/destroy/?id="+$(this).attr('deleteId'));
+    });
+  };
   return {
     //== Public functions
     init: function() {
       // init dmeo
       demo();
+      deleteModal();
     },
   };
 }();
@@ -70,4 +76,5 @@ var DatatableHtmlTableDemo = function() {
 
 jQuery(document).ready(function() {
   DatatableHtmlTableDemo.init();
+
 });

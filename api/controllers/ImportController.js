@@ -29,9 +29,13 @@ module.exports = {
       req.file('ImportFile').upload({
         dirname:'../../assets/files/'},function(err,files){
         if (err) return res.serverError(err);
-        req.session.import={file:files[0],lists:params['lists[]']};
         var first2Line=module.exports.XLSX2ToJson(files[0].fd)[0];
-        res.view('page/imports/new-step2',{first2Line:first2Line});
+        Import.create({path:files[0].fd,name:files[0].filename,lists:params['lists[]']}, function importCreated (err, createdImport) {
+          if (err) {
+            return res.serverError(err);
+          }
+          res.view('page/imports/new-step2',{file:createdImport,first2Line:first2Line});
+        });
       });
     }
   },
@@ -45,6 +49,8 @@ module.exports = {
 
 
   create: function(req,res) {
+    return res.view('page/imports/new-step3');
+    /*
     var file=req.session.import.file,
        lists=req.session.import.lists;
       var params = _.extend(req.query || {}, req.params || {}, req.body || {});
@@ -66,6 +72,7 @@ module.exports = {
       });
       res.redirect("/imports/");
     });
+    */
   },
 
   destroy: function (req,res) {
