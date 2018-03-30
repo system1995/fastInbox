@@ -153,12 +153,160 @@
                         <a class="dropdown-item deleteModal" href="#" data-toggle="modal" data-target="#m_modal_5" deleteId="<%= subscriber.id %>"><i class="la la-trash"></i>Delete</a>
                       </div>
                     </div>
-                    <a href="#" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">
-                      <i class="la la-edit"></i>
+                    <a href="#" data-toggle="modal" data-target="#m_modal_<%= subscriber.id %>" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">
+                      <i class="flaticon-search-1"></i>
                     </a>
                   </span>
                 </td>
+                <!--begin::Modal-->
+                <div class="modal fade" id="m_modal_<%= subscriber.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                          Detail subscriber
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												&times;
+											</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist">
+                          <!--begin::Item-->
+                          <div class="m-accordion__item">
+                            <div class="m-accordion__item-head collapsed"  role="tab" id="m_accordion_1_item_head" data-toggle="collapse" href="#m_accordion_1_item_1_body_<%= subscriber.id %>" aria-expanded="    false">
+													<span class="m-accordion__item-icon">
+														<i class="fa flaticon-information"></i>
+													</span>
+                              <span class="m-accordion__item-title">
+														 General Info
+													</span>
+                              <span class="m-accordion__item-mode"></span>
+                            </div>
+                            <div class="m-accordion__item-body collapse" id="m_accordion_1_item_1_body_<%= subscriber.id %>" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_1_head" data-parent="#m_accordion_1">
+                              <div class="m-accordion__item-content">
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-4 m--font-boldest">
+                                    Full Name:
+                                  </label>
+                                  <div class="col-8 m-form__control-static">
+                                  <span class=" ">
+                                    <%= subscriber.fullName %>
+                                  </span>
+                                  </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-4 m--font-boldest">
+                                    Email:
+                                  </label>
+                                  <div class="col-8 m-form__control-static">
+                                  <span class=" ">
+                                    <%= subscriber.email %>
+                                  </span>
+                                  </div>
+                                </div>
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-4 m--font-boldest">
+                                    Phone Number:
+                                  </label>
+                                  <div class="col-8 m-form__control-static">
+                                  <span class=" ">
+                                    <%= subscriber.phoneNumber %>
+                                  </span>
+                                  </div>
+                                </div>
+
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-4 m--font-boldest">
+                                    Lists:
+                                  </label>
+                                  <div class="col-8 m-form__control-static">
+                                  <span class=" ">
+                                    <% _.each(subscriber.lists, function (list) { %>
+                                    <%= list.name %> </br>
+                                    <% }) %>
+                                  </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end::Item-->
+                          <!--begin::Item-->
+                          <div class="m-accordion__item">
+                            <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_2_head" data-toggle="collapse" href="#m_accordion_1_item_2_body_ <%= subscriber.id %>" aria-expanded="    false">
+													<span class="m-accordion__item-icon">
+														<i class="fa fa-plus-square-o"></i>
+													</span>
+                              <span class="m-accordion__item-title">
+														Additional
+													</span>
+                              <span class="m-accordion__item-mode"></span>
+                            </div>
+                            <div class="m-accordion__item-body collapse" id="m_accordion_1_item_2_body_ <%= subscriber.id %>" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_2_head" data-parent="#m_accordion_1">
+                              <div class="m-accordion__item-content">
+                                <% for(var key in subscriber) {
+                                if(key.startsWith('ex_'))
+                                { %>
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-4 m--font-boldest">
+                                    <%=key.slice(3)%>
+                                  </label>
+                                  <div class="col-8 m-form__control-static">
+                                  <span class=" ">
+                                    <%= subscriber[key] %>
+                                  </span>
+                                  </div>
+                                </div>
+                                <%}}%>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end::Item-->
+                          <!--begin::Item-->
+                          <div class="m-accordion__item">
+                            <div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_3_head" data-toggle="collapse" href="#m_accordion_1_item_3_body_ <%= subscriber.id %>" aria-expanded="    false">
+													<span class="m-accordion__item-icon">
+														<i class="fa fa-street-view"></i>
+													</span>
+                              <span class="m-accordion__item-title">
+														Audience
+													</span>
+                              <span class="m-accordion__item-mode"></span>
+                            </div>
+                            <div class="m-accordion__item-body collapse" id="m_accordion_1_item_3_body_ <%= subscriber.id %>" class=" " role="tabpanel" aria-labelledby="m_accordion_1_item_3_head" data-parent="#m_accordion_1">
+                              <div class="m-accordion__item-content">
+                                <% _.each(audiences, function (audience) { if(subscriber[audience.key]) { %>
+                                <div class="form-group m-form__group row">
+                                  <label for="example-text-input" class="col-4 m--font-boldest">
+                                    <%=audience.key %>
+                                  </label>
+                                  <div class="col-8 m-form__control-static">
+                                  <span class=" ">
+                                    <%= subscriber[audience.key] %>
+                                  </span>
+                                  </div>
+                                </div>
+                                <%}})%>
+                              </div>
+                            </div>
+                          </div>
+                          <!--end::Item-->
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                          Close
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--end::Modal-->
               </tr>
+
               <% }) %>
               <!--end: Datatable -->
               <div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -175,7 +323,7 @@
                       </button>
                     </div>
                     <div class="modal-body">
-                      <div class="alert alert-danger" role="alert">Are you sure you want to delete this account?</div>
+                      <div class="alert alert-danger" role="alert">Are you sure you want to delete this subscriber?</div>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

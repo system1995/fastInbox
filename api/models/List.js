@@ -19,7 +19,6 @@ module.exports = {
       collection: 'Import',
       via : 'lists',
     },
-
     exports : {
       collection: 'Export',
       via : 'lists',

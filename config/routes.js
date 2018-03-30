@@ -88,6 +88,10 @@ module.exports.routes = {
   '/exports': 'ExportController.index',
   '/exports/new': 'ExportController.new',
   '/exports/destroy': 'ExportController.destroy',
+  '/exports/create': 'ExportController.create',
   'post /exports/create': 'ExportController.create',
 
+  /***************ProcessInvalidEmail*************************/
+  '/process_invalid_emails': 'ProcInvEmailController.new',
+  'post /process_invalid_emails': 'ProcInvEmailController.new',
 };

@@ -19,6 +19,10 @@ module.exports = {
     lists : {
       collection: 'List',
     },
+    exports : {
+      collection: 'Export',
+      via : 'segments',
+    },
 
   }
 };

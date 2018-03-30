@@ -23,7 +23,7 @@
             <div class="m-portlet__head-caption">
               <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
-                  <i class="flaticon-add"></i> Import subscribers from file : <%=file.name%>
+                  <i class="flaticon-add"></i> Import subscribers from file : <%=Import.name%>
                 </h3>
               </div>
             </div>
@@ -129,6 +129,7 @@
                       </div>
                     </div>
                   </div>
+                  <input id="idImport" name="idImport" type="hidden" value="<%=Import.id %>">
                   <table class="table m-table m-table--head-bg-brand">
                     <thead>
                     <tr>
@@ -148,13 +149,13 @@
                     </thead>
                     <tbody>
 
-                    <%for(var key in first2Line) {%>
+                    <% for (var i in first2Line[0]) {%>
                     <tr>
                       <td>
                         <div class="input-group">
-                        <select class="form-control fieldSelect" name="select<%=Object.keys(first2Line).indexOf(key)%>">
+                        <select class="form-control fieldSelect" name="select<%=i%>">
                           <option disabled selected value> -- select an field -- </option>
-                          <option value="name">name</option>
+                          <option value="fullName">fullName</option>
                           <option value="email">email</option>
                           <option value="phoneNumber">phoneNumber</option>
                         </select>
@@ -163,9 +164,9 @@
                         </button>
                         </div>
                       </td>
-                      <td><%=key%></td>
-                      <td><%=first2Line[key]%></td>
-                      <td><input class="form-control m-input" id="exampleInputPassword1" placeholder="Default value" type="text"></td>
+                      <td><%=first2Line[0][i]%></td>
+                      <td><%=first2Line[1][i]%></td>
+                      <td><input class="form-control m-input"  placeholder="Default value" type="text"></td>
                     </tr>
                     <%}%>
                     </tbody>
@@ -206,7 +207,6 @@
 </div>
 <% block('localScripts', '<script src="/js/imports/new-step2.js" type="text/javascript"></script>') %>
 <% block('localStyles', '<link rel="stylesheet" href="/styles/imports/new-step2.css">') %>
-
 
 
 

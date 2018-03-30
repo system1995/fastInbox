@@ -17,7 +17,9 @@ module.exports = {
     },
     segments : {
       collection: 'Segment',
+      via : 'exports',
     },
+
   }
 };
 

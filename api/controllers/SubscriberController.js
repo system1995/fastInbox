@@ -11,7 +11,10 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      res.view('page/subscribers/index', {subscribers: subscribers});
+      Parameter.find({model:'audience'},function (err,audiences) {
+        if (err) { return res.serverError(err); }
+        res.view('page/subscribers/index',{subscribers: subscribers,audiences:audiences});
+      });
     });
   },
 

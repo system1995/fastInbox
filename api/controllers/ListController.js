@@ -9,6 +9,7 @@ module.exports = {
   index: function (req, res) {
     List.find().populate('subscribers').exec(function(err, lists){
       if (err) return res.serverError(err);
+
       res.view('page/lists/index',{lists: lists});
     });
   },

@@ -40,6 +40,7 @@
       }
     });
   </script>
+  <%if(typeof user !== 'undefined'){%>
   <!--end::Web font -->
   <!--begin::Base Styles -->
   <!--begin::Page Vendors -->
@@ -48,12 +49,13 @@
   <link href="/demo/demo3/base/style.bundle.css" rel="stylesheet" type="text/css" />
   <!--end::Base Styles -->
   <link rel="shortcut icon" href="/demo/demo3/media/img/logo/favicon.ico" />
+  <%}%>
 
 </head>
 
 
 <body>
-
+<%if(typeof user !== 'undefined'){%>
 <!--Nave-side of dashboard-->
 <div class="m-page--fluid m--skin- m-content--skin-light2 m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--fixed m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default"  >
 <!-- begin:: Page -->
@@ -520,10 +522,10 @@
                           </div>
                           <div class="m-card-user__details">
 																<span class="m-card-user__name m--font-weight-500">
-																	<%= user.username %>
+																	 <%if(typeof user !== 'undefined'){%> <%= user.username %> <% } %>
 																</span>
                             <a href="" class="m-card-user__email m--font-weight-300 m-link">
-                              <%= user.email %>
+                              <%if(typeof user !== 'undefined'){%> <%= user.email %> <% } %>
                             </a>
                           </div>
                         </div>
@@ -668,7 +670,7 @@
                   </a>
                 </li>
                 <li class="m-menu__item <%if (req.url.includes("/process_invalid_emails")) { %> m-menu__item--active <%}%>" aria-haspopup="true"  data-redirect="true">
-                  <a  href="inner.html" class="m-menu__link ">
+                  <a  href="/process_invalid_emails" class="m-menu__link ">
                     <i class="m-menu__link-icon flaticon-refresh "></i>
                     <span class="m-menu__link-text">
 													Process invalid emails
@@ -986,5 +988,9 @@
 <!--SCRIPTS-->
 <script src="/js/dependencies/sails.io.js"></script>
 <!--SCRIPTS END-->
+
+<%}else{%>
+<%- body %>
+<%}%>
 </body>
 </html>

@@ -42,8 +42,8 @@ $(function() {
 
   $( ".btn-remove" ).click(function() {
     var select=$(this).parent().find('select');
-    alert("rre");
     select.find('[value="' + select.val() + '"]').remove();
+    select.val("");
     select.selectpicker('refresh');
   });
 
