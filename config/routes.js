@@ -94,4 +94,12 @@ module.exports.routes = {
   /***************ProcessInvalidEmail*************************/
   '/process_invalid_emails': 'ProcInvEmailController.new',
   'post /process_invalid_emails': 'ProcInvEmailController.new',
+
+  /***************Email Template*************************/
+  '/emailsTemplate': 'emailTemplateController.index',
+  '/emailsTemplate/new': 'emailTemplateController.new',
+  'post /emailsTemplate/create': 'emailTemplateController.create',
+  '/emailsTemplate/edit': 'emailTemplateController.edit',
+  'post /emailsTemplate/update': 'emailTemplateController.update',
+
 };

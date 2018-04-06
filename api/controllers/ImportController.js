@@ -29,7 +29,10 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      res.view('page/imports/new-step1', {lists: lists});
+      Parameter.find({model:'audience'},function (err,audiences) {
+        if (err) { return res.serverError(err); }
+        res.view('page/imports/new-step1',{audiences:audiences,lists: lists});
+      })
     });
   },
 
@@ -79,7 +82,9 @@ module.exports = {
       if(files[0].filename.split('.').pop()=="xlsx") var first2Line=module.exports.XLSX2ToJson(files[0].fd).slice(0,2);
       else if(files[0].filename.split('.').pop()=="csv") var first2Line=module.exports.CSV2ToJson(files[0].fd).slice(0,2);
       else var first2Line=module.exports.XML2ToJson(files[0].fd).slice(0,2);
-      Import.create({path:files[0].fd,name:files[0].filename,lists:params['lists[]'],progress:'30'}, function importCreated (err, createdImport) {
+      var lists=params['lists[]'];
+      delete params['lists[]'];
+      Import.create(Object.assign(params,{path:files[0].fd,name:files[0].filename,lists:lists,progress:'30'}), function importCreated (err, createdImport) {
         if (err) {
           return res.serverError(err);
         }
@@ -95,16 +100,17 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      else if(Import.name.split('.').pop()=="csv") var subscribers=module.exports.CSV2ToJson(Import.path).slice(1);
-      else var subscribers=module.exports.XML2ToJson(Import.path);
-
-      var subscribers=module.exports.XLSX2ToJson(Import.path), newSubscriber={};
+      if(Import.name.split('.').pop()=="csv")  var subscribers=module.exports.CSV2ToJson(Import.path);
+      else if(Import.name.split('.').pop()=="xml")  var subscribers=module.exports.XML2ToJson(Import.path);
+      else var subscribers=module.exports.XLSX2ToJson(Import.path);
+      if(params['importFirstLine']!='on') subscribers.shift();
       delete params['idImport'];
+      var newSubscriber={};
       subscribers.forEach(function(subscriber)
       {
         var keys=Object.keys(subscriber);
         for (var key in params) {
-          newSubscriber[params[key]]=subscriber[Object.keys(subscriber)[Object.keys(params).indexOf(key)]];
+          newSubscriber[params[key]]=subscriber[Object.keys(subscriber)[parseInt(key.slice(-1))]];
         }
         Subscriber.create(Object.assign(newSubscriber,{status:'active',lists:Import.lists})).exec(function (err,subscriberCreated) {
           if (err) {return res.serverError(err);}

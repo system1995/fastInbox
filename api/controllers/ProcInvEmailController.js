@@ -18,8 +18,6 @@ module.exports = {
     else {
       var params = _.extend(req.query || {}, req.params || {}, req.body || {});
       if(params['current_step']=='2') {
-        console.log("1"+params['id']);
-        console.log("2"+params['id[]']);
         Subscriber.find({id: params['id[]']}).exec(function (err, subscribers) {
           if (err) {
             return res.serverError(err);

@@ -733,12 +733,12 @@
             </div>
           </li>
 
-          <li class="m-menu__item" aria-haspopup="true" >
-            <a  href="index.html" class="m-menu__link ">
+          <li class="m-menu__item  <%if (req.url.includes("/emailsTemplate")) { %> m-menu__item--active <%}%>" aria-haspopup="true" >
+            <a  href="/emailsTemplate" class="m-menu__link ">
               <span class="m-menu__item-here"></span>
-              <i class="m-menu__link-icon flaticon-line-graph"></i>
+              <i class="m-menu__link-icon flaticon-imac"></i>
               <span class="m-menu__link-text">
-										Email templates
+										Emails template
 									</span>
             </a>
           </li>

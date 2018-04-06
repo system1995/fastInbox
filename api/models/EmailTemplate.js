@@ -13,11 +13,14 @@ module.exports = {
     },
     category : {
       type: 'string',
-      enum: ['trade','lead Opportunity','organization','task','project'],
+      enum: ['trade','leadOpportunity','organization','task','project'],
       defaultsTo: 'trade'
     },
     description : {
       type: 'string',
+    },
+    templateCategory : {
+      model: 'TemplateCategory'
     },
   }
 };

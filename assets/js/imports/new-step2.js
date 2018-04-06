@@ -30,7 +30,8 @@ $(function() {
         $(this).find('[value="' + current + '"]').remove();
         if($(this).find('[value="' + previous + '"]').length == 0 && previous)
         {
-            $(this).children("option").eq(1).before($("<option></option>").val(previous).text(previous));
+            if(previous.includes("ex_")) $(this).children("option").eq(1).before($("<option></option>").val(previous).text(previous.split("_")[1]));
+            else $(this).children("option").eq(1).before($("<option></option>").val(previous).text(previous));
         }
       }
       $(this).selectpicker('refresh');
@@ -61,7 +62,7 @@ function addSelectItem(t,ev)
   if(existSelectItem(txt)==false) {
     var o = $('option', p).eq(-2);
     if (p.attr("name") != p.attr("name")) o.before($("<option>", {"selected": false, "text": txt}));
-    else o.before($("<option>", {"selected": true, "text": txt, "value": txt}));
+    else o.before($("<option>", {"selected": true, "text": txt, "value": "ex_"+txt}));
     p.selectpicker('refresh');
     $('select.fieldSelect').each(function () {
       if ($(this).attr("name") != p.attr("name")) {
