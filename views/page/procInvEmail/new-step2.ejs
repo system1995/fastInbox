@@ -144,7 +144,6 @@
                     <% _.each(subscribers, function (subscriber,i) { %>
                     <tr>
                       <td>
-                        <input type="hidden" name="id[]" value="<%=subscriber.id%>">
                         <%= i+1 %>
                       </td>
                       <td>
@@ -157,11 +156,11 @@
                         <%= subscriber.phoneNumber %>
                       </td>
                       <td>
-                        domain invalid
+                        <%= subscriber.reason %>
                       </td>
                       <td>
                         <label class="m-checkbox m-checkbox--square">
-                          <input checked="checked" type="checkbox">
+                          <input type="checkbox" name="<%= subscriber.id %>">
                           Checked
                           <span></span>
                         </label>

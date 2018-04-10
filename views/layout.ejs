@@ -742,8 +742,8 @@
 									</span>
             </a>
           </li>
-          <li class="m-menu__item" aria-haspopup="true" >
-            <a  href="index.html" class="m-menu__link ">
+          <li class="m-menu__item <%if (req.url.includes("/campaigns")) { %> m-menu__item--active <%}%>" aria-haspopup="true" >
+            <a  href="/campaigns" class="m-menu__link ">
               <span class="m-menu__item-here"></span>
               <i class="m-menu__link-icon la la-bullhorn"></i>
               <span class="m-menu__link-text">

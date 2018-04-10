@@ -1,5 +1,5 @@
 /**
- * ImportController
+ * emailTemplateController
  *
  * @description :: Server-side logic for managing Import
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
@@ -32,22 +32,30 @@ module.exports = {
         if (err) return res.serverError(err);
         emailsTemplate.path=files[0].fd;
         emailsTemplate.save(function(err){ console.log(err)});
-        module.exports.screenShotHTML(files[0].fd,sails.config.appPath+'/assets/files/emailsTemplate/'+emailsTemplate.id);
-        if (!require("fs").existsSync(sails.config.appPath + '/.tmp/public/files/emailsTemplate/')) {
-          require("fs").mkdir(sails.config.appPath + '/.tmp/public/files/emailsTemplate/');
-        }
-        require("fs").mkdir(sails.config.appPath+'/.tmp/public/files/emailsTemplate/'+emailsTemplate.id);
-        module.exports.screenShotHTML(files[0].fd,sails.config.appPath+'/.tmp/public/files/emailsTemplate/'+emailsTemplate.id);
+        module.exports.screenTemplateEmail(emailsTemplate.path,emailsTemplate.id);
         res.redirect("/emailsTemplate/");
       });
     });
   },
 
+  screenTemplateEmail:function(path,id){
+    module.exports.screenShotHTML(path,sails.config.appPath+'/assets/files/emailsTemplate/'+id);
+    if (!require("fs").existsSync(sails.config.appPath + '/.tmp/public/files/emailsTemplate/')) {
+      require("fs").mkdir(sails.config.appPath + '/.tmp/public/files/emailsTemplate/');
+    }
+    if (!require("fs").existsSync(sails.config.appPath + '/.tmp/public/files/emailsTemplate/'+id)) {
+      require("fs").mkdir(sails.config.appPath + '/.tmp/public/files/emailsTemplate/' + id);
+    }
+    module.exports.screenShotHTML(path,sails.config.appPath+'/.tmp/public/files/emailsTemplate/'+id);
+  },
+
   screenShotHTML:function(pathInput,pathOutput){
     var htmlConvert = require('html-convert');
     var fs = require('fs');
+    if (fs.existsSync(pathOutput+'/screenShot.jpg')) {
+        fs.unlink(pathOutput+'/screenShot.jpg');
+    }
     var convert = htmlConvert();
-    console.log(pathOutput);
 // or as a transform stream
     var stream=fs.createReadStream(pathInput);
       stream.pipe(convert())
@@ -64,34 +72,40 @@ module.exports = {
       if (err) {
         return res.serverError(err);
       }
-      res.view('page/emailsTemplate/edit',{layout: false,emailTemplate:emailTemplate});
+      res.view('page/emailsTemplate/edit',{emailTemplate:emailTemplate});
     });
   },
 
   update: function (req,res) {
-    var id = req.param('id');
-    if (!id) return res.send("No id specified.",500);
-    EmailTemplate.findOne({id:id}).exec(function (err, emailTemplate){
+    if (!req.param('id')) return res.send("No id specified.",500);
+    EmailTemplate.findOne({id:req.param('id')}).exec(function (err, emailTemplate){
       if (err) {
         return res.serverError(err);
       }
-      console.log(emailTemplate.id);
+      emailTemplate.name=req.param('name');
+      emailTemplate.category=req.param('category');
+      emailTemplate.description=req.param('description');
+      emailTemplate.save();
       fs = require('fs');
       fs.writeFile(emailTemplate.path,req.param('html'), function(err) {
         if(err) {
           return console.log(err);
         }
+        module.exports.screenTemplateEmail(emailTemplate.path,emailTemplate.id);
+        res.json({});
       });
     });
   },
 
 
   destroy: function (req,res) {
-    return res.json({});
     var id = req.param('id');
-    Import.destroy({id:id}).exec(function (err){
+    EmailTemplate.destroy({id:id}).exec(function (err){
       if (err) {return res.negotiate(err);}
-      return res.redirect("/imports/");
+      require('rmdir')(sails.config.appPath+'/assets/files/emailsTemplate/'+id, function (err, dirs, files) {
+        if(err) return console.log(err);
+      });
+      return res.redirect("/emailsTemplate/");
     });
   },
 

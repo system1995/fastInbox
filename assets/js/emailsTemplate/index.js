@@ -10,4 +10,8 @@ $( document ).ready(function() {
     }
   );
   $('#m_form_category').selectpicker();
+
+  $('.deleteModal').click(function(evt) {
+    $( "#deleteHref" ).attr( "href", "/emailsTemplate/destroy/?id="+$(this).attr('deleteId'));
+  });
 });

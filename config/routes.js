@@ -90,16 +90,19 @@ module.exports.routes = {
   '/exports/destroy': 'ExportController.destroy',
   '/exports/create': 'ExportController.create',
   'post /exports/create': 'ExportController.create',
-
   /***************ProcessInvalidEmail*************************/
   '/process_invalid_emails': 'ProcInvEmailController.new',
   'post /process_invalid_emails': 'ProcInvEmailController.new',
-
+  'post /process_invalid_emails/destroy': 'ProcInvEmailController.destroy',
   /***************Email Template*************************/
   '/emailsTemplate': 'emailTemplateController.index',
   '/emailsTemplate/new': 'emailTemplateController.new',
   'post /emailsTemplate/create': 'emailTemplateController.create',
   '/emailsTemplate/edit': 'emailTemplateController.edit',
   'post /emailsTemplate/update': 'emailTemplateController.update',
+  '/emailsTemplate/destroy': 'emailTemplateController.destroy',
+  /***************Campaign*************************/
+  '/campaigns': 'campaignController.index',
+  '/campaigns/new': 'campaignController.new',
 
 };
