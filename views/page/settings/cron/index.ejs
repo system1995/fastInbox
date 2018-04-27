@@ -1,0 +1,202 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title ">
+          Cron
+        </h3>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <!--Begin::Section-->
+    <div class="row">
+      <div class="col-lg-12">
+        <!--begin::Portlet-->
+        <div class="m-portlet m-portlet--mobile">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                  <i class="flaticon-time-2"></i> Cron<small>Settings</small>
+                </h3>
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <ul class="m-portlet__nav">
+              </ul>
+            </div>
+          </div>
+          <form class="m-form ">
+            <div class="m-portlet__body">
+               <div class="m-section">
+                        <strong class="m-section__sub">
+                          Deliverability:
+                        </strong>
+                <div class="m-section__content">
+                  <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                    <div class="m-demo__preview">
+                      <!--begin::Form-->
+                      <div class="form-group m-form__group row">
+                        <div class="col-lg-4">
+                          <label>
+                            Campaigns at once:
+                          </label>
+                          <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                            The number of campaigns to process at once.
+                            </span>
+                        </div>
+                        <div class="col-lg-4">
+                          <label>
+                            Emails per minute:
+                          </label>
+                            <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                              Limit the number of emails sent in one minute.
+                            </span>
+                        </div>
+                        <div class="col-lg-4">
+                          <label class="">
+                            Pause:
+                          </label>
+                          <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                              How many seconds to sleep after sending a batch of emails.
+                            </span>
+                        </div>
+                      </div>
+                      <div class="form-group m-form__group row">
+                        <div class="col-lg-4">
+                          <label>
+                            Change server at:
+                          </label>
+                          <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                              After how many sent emails the delivery server should be change.
+                          </span>
+                        </div>
+                        <div class="col-lg-4">
+                          <label class="">
+                            Bounce Max:
+                          </label>
+                          <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                              Blocked a campaign when it reaches this bounce.
+                            </span>
+                        </div>
+                      </div>
+                      <!--end::Form-->
+                    </div>
+                  </div>
+                </div>
+
+                <strong class="m-section__sub">
+                          Email verification:
+                        </strong>
+                <div class="m-section__content">
+                  <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                    <div class="m-demo__preview">
+                      <!--begin::Form-->
+                      <div class="form-group m-form__group row">
+                        <div class="col-lg-4">
+                          <div class="m-checkbox-inline">
+                            <label class="m-checkbox">
+                              <input type="checkbox">
+                              Domain email validation
+                              <span></span>
+                            </label>
+                          </div>
+                          <span class="m-form__help">
+                              Check email address by domain name
+                            </span>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="m-checkbox-inline">
+                            <label class="m-checkbox">
+                              <input type="checkbox">
+                              IP email validation
+                              <span></span>
+                            </label>
+                          </div>
+                          <span class="m-form__help">
+                              Check email address by IP
+                          </span>
+                        </div>
+                        <div class="col-lg-4">
+                          <div class="m-checkbox-inline">
+                            <label class="m-checkbox">
+                              <input type="checkbox">
+                              User name email validation
+                              <span></span>
+                            </label>
+                          </div>
+                          <span class="m-form__help">
+                              Check email adress by user name
+                            </span>
+                        </div>
+                      </div>
+                      <!--end::Form-->
+                    </div>
+                  </div>
+                </div>
+
+                <strong class="m-section__sub">
+                          Import/Export:
+                        </strong>
+                <div class="m-section__content">
+                  <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                    <div class="m-demo__preview">
+                      <!--begin::Form-->
+                      <div class="form-group m-form__group row">
+                        <div class="col-lg-4">
+                          <label>
+                            Subscriber per minute:
+                          </label>
+                          <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                              Limit the number of subscribers to process in one minute.
+                            </span>
+                        </div>
+                        <div class="col-lg-4">
+                          <label class="">
+                            Pause:
+                          </label>
+                          <input class="form-control m-input" value="42" id="example-number-input" type="number">
+                          <span class="m-form__help">
+                              How many seconds to sleep after processing a batch of subscribers.
+                            </span>
+                        </div>
+                      </div>
+                      <!--end::Form-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="m-portlet__foot m-portlet__foot--fit">
+              <div class="m-form__actions m--align-right">
+                <button type="submit" class="btn btn-brand">
+                  <span>
+                    <span>
+                      Save changes &nbsp;
+                    </span>
+                    &nbsp;&nbsp;
+                    <i class="fa fa-save"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--end::Portlet-->
+      </div>
+    </div>
+    <!--End::Section-->
+  </div>
+</div>
+

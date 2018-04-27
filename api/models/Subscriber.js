@@ -21,7 +21,10 @@ module.exports = {
       collection: 'List',
       via: 'subscribers',
     },
-
+    segments : {
+      collection: 'Segment',
+      via: 'subscribers',
+    },
     beforeDestroy: function(criteria, cb) {
       Subscriber.find(criteria).exec(function(err, subscriberToDestroy) {
         subscriberToDestroy.lists.remove();

@@ -19,10 +19,17 @@ module.exports = {
     lists : {
       collection: 'List',
     },
+    subscribers : {
+      collection: 'Subscriber',
+      via :'segments',
+    },
+    lists : {
+      collection: 'List',
+      via :'segments',
+    },
     exports : {
       collection: 'Export',
       via : 'segments',
     },
-
   }
 };

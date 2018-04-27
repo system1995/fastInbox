@@ -15,6 +15,10 @@ module.exports = {
       collection: 'Subscriber',
       via :'lists',
     },
+    segments : {
+      collection: 'Segment',
+      via :'lists',
+    },
     imports : {
       collection: 'Import',
       via : 'lists',

@@ -95,14 +95,26 @@ module.exports.routes = {
   'post /process_invalid_emails': 'ProcInvEmailController.new',
   'post /process_invalid_emails/destroy': 'ProcInvEmailController.destroy',
   /***************Email Template*************************/
-  '/emailsTemplate': 'emailTemplateController.index',
-  '/emailsTemplate/new': 'emailTemplateController.new',
-  'post /emailsTemplate/create': 'emailTemplateController.create',
-  '/emailsTemplate/edit': 'emailTemplateController.edit',
-  'post /emailsTemplate/update': 'emailTemplateController.update',
-  '/emailsTemplate/destroy': 'emailTemplateController.destroy',
+  '/emailsTemplate': 'EmailTemplateController.index',
+  '/emailsTemplate/new': 'EmailTemplateController.new',
+  'post /emailsTemplate/create': 'EmailTemplateController.create',
+  '/emailsTemplate/edit': 'EmailTemplateController.edit',
+  'post /emailsTemplate/update': 'EmailTemplateController.update',
+  '/emailsTemplate/destroy': 'EmailTemplateController.destroy',
   /***************Campaign*************************/
-  '/campaigns': 'campaignController.index',
-  '/campaigns/new': 'campaignController.new',
+  '/campaigns': 'CampaignController.index',
+  '/campaigns/new': 'CampaignController.new',
+  /***************Profile********************************/
+  'profile': 'ProfileController.index',
+  '/profile/edit': 'ProfileController.edit',
+  '/profile/editImage': 'ProfileController.editImage',
+  /******************Settings********************************/
+  '/settings_cron': 'SettingController.cronIndex',
+  /******************Report*****************************/
+  '/reports': 'ReportController.index',
 
+  /*****************Segment*********************/
+  '/segments': 'SegmentController.index',
+  '/segments/new': 'SegmentController.new',
+  'post /segments/create': 'SegmentController.create',
 };

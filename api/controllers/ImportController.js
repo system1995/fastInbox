@@ -26,6 +26,7 @@ module.exports = {
 
   new: function (req, res) {
     List.find(function (err, lists) {
+      //return res.view('page/imports/new-step3');
       if (err) {
         return res.serverError(err);
       }

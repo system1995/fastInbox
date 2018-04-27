@@ -147,7 +147,7 @@
             1) Use m-form--label-align-left class to alight the form input lables to the right
             2) Use m-form--state class to highlight input control borders on form validation
             -->
-              <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaign" action="/campaigns/new/?type=email&step=2" method="POST" enctype="multipart/form-data">
+              <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaign" action="/campaigns/new/?type=<%= req.query.type %>&step=2" method="POST" enctype="multipart/form-data">
                 <!--begin: Form Body -->
                 <div class="m-portlet__body">
                   <div class="m-form__content">
@@ -220,7 +220,7 @@
 
                   <div class="form-group m-form__group" id="formAttachment">
                     <label for="ImportFile">
-                      Attachment
+                      Attachments
                     </label>
                     <div class="controls">
                       <div class="entry input-group col-xs-3">

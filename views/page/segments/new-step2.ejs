@@ -1,0 +1,547 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title ">
+          Segments
+        </h3>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <!--Begin::Section-->
+    <div class="row">
+      <div class="col-lg-12">
+        <!--Begin::Main Portlet-->
+        <div class="m-portlet m-portlet--full-height">
+          <!--begin: Portlet Head-->
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                  <i class="flaticon-add"></i> New segments
+                </h3>
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item">
+                  <a href="#" data-toggle="m-tooltip" class="m-portlet__nav-link m-portlet__nav-link--icon" data-direction="left" data-width="auto" title="Get help with filling up this form">
+                    <i class="flaticon-info m--icon-font-size-lg3"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!--end: Portlet Head-->
+          <!--begin: Form Wizard-->
+          <div class="m-wizard m-wizard--2 m-wizard--success" id="m_wizard">
+            <!--begin: Message container -->
+            <div class="m-portlet__padding-x">
+              <!-- Here you can put a message or alert -->
+            </div>
+            <!--end: Message container -->
+            <!--begin: Form Wizard Head -->
+            <div class="m-wizard__head m-portlet__padding-x">
+              <!--begin: Form Wizard Progress -->
+              <div class="m-wizard__progress">
+                <div class="progress">
+                  <div class="progress-bar" role="progressbar"  aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+              </div>
+              <!--end: Form Wizard Progress -->
+              <!--begin: Form Wizard Nav -->
+              <div class="m-wizard__nav">
+                <div class="m-wizard__steps">
+                  <div class="m-wizard__step "  data-wizard-target="#m_wizard_form_step_1">
+                    <a href="#"  class="m-wizard__step-number">
+													<span>
+														<i class="flaticon-list-3"></i>
+													</span>
+                    </a>
+                    <div class="m-wizard__step-info">
+                      <div class="m-wizard__step-title">
+                        1. Lists of subscribers
+                      </div>
+                      <div class="m-wizard__step-desc">
+                        Source lists
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-wizard__step m-wizard__step--current" data-wizard-target="#m_wizard_form_step_2">
+                    <a href="#" class="m-wizard__step-number">
+													<span style="background-color:#564ec0">
+														<i class="la la-search-plus"></i>
+													</span>
+                    </a>
+                    <div class="m-wizard__step-info">
+                      <div class="m-wizard__step-title">
+                        2. Custom audience
+                      </div>
+                      <div class="m-wizard__step-desc">
+                        Target the right subscribers
+                      </div>
+                    </div>
+                  </div>
+                  <div class="m-wizard__step" data-wizard-target="#m_wizard_form_step_3">
+                    <a href="#" class="m-wizard__step-number">
+													<span>
+														<i class="fa  fa-check"></i>
+													</span>
+                    </a>
+                    <div class="m-wizard__step-info">
+                      <div class="m-wizard__step-title">
+                        3. Confirmation
+                      </div>
+                      <div class="m-wizard__step-desc">
+                        Validation of the segment
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end: Form Wizard Nav -->
+            </div>
+            <!--end: Form Wizard Head -->
+            <!--begin: Form Wizard Form-->
+            <div class="m-wizard__form">
+              <!--
+            1) Use m-form--label-align-left class to alight the form input lables to the right
+            2) Use m-form--state class to highlight input control borders on form validation
+            -->
+              <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_procInvEmail" action="/segments/create" method="POST" enctype="multipart/form-data">
+                <!--begin: Form Body -->
+                <input id="idImport" name="idSegment" type="hidden" value="<%=segment.id %>">
+                <div class="m-portlet__body">
+                    <div class="m-form__content">
+                      <div class="m-alert m-alert--icon alert alert-warning m--hide" role="alert" id="m_form_2_msg">
+                        <div class="m-alert__icon">
+                          <i class="la la-warning"></i>
+                        </div>
+                        <div class="m-alert__text">
+                          Oh snap! Change a few things up and try submitting again.
+                        </div>
+                        <div class="m-alert__close">
+                          <button type="button" class="close" data-close="alert" aria-label="Close"></button>
+                        </div>
+                      </div>
+                    </div>
+
+                  <div class="m-section">
+                    <strong class="m-section__sub">
+                      Demographic:
+                    </strong>
+                    <div class="m-section__content">
+                      <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                        <div class="m-demo__preview">
+                          <!--begin::Form-->
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6">
+                              <label class="">
+                                Age:
+                              </label>
+                              <div class="row">
+                                <input class="form-control m-input col-lg-5" value="Min" id="example-number-input" type="number">
+                                <input class="form-control m-input col-lg-5" value="Max" id="example-number-input" type="number">
+                              </div>
+                              <span class="m-form__help">
+                              Please enter the Min Age and Max Age
+                            </span>
+                            </div>
+                            <div class="col-lg-6">
+                              <label>
+                                Gender:
+                              </label>
+                              <div class="m-checkbox-inline">
+                                <label class="m-checkbox">
+                                  <input type="checkbox">
+                                   Female
+                                  <span></span>
+                                </label>
+                                <label class="m-checkbox ">
+                                  <input type="checkbox">
+                                  Male
+                                  <span></span>
+                                </label>
+                              </div>
+                              <span class="m-form__help">
+                              Please select a gender
+                              </span>
+                            </div>
+                          </div>
+
+                          <!--end::Form-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <strong class="m-section__sub">
+                      Geo:
+                    </strong>
+                    <div class="m-section__content">
+                      <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                        <div class="m-demo__preview">
+                          <!--begin::Form-->
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6">
+                              <label class="">
+                                Location:
+                              </label>
+                              <div class="input-group">
+                                <!-- <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a location -- </option>
+                                  <option value="fullName">fullName</option>
+                                  <option value="email">email</option>
+                                  <option value="phoneNumber">phoneNumber</option>
+                                </select>
+                               <button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                                <table id="address">
+                                  <tr>
+                                    <td class="label">Address</td>
+                                    <td class="slimField" colspan="3">
+                                      <div id="locationField">
+                                        <input id="autocomplete" class="form-control m-input" placeholder="Enter your address" onFocus="geolocate()" type="text">
+                                      </div>
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td class="label">Street address</td>
+                                    <td class="slimField"><input class="form-control m-input" id="street_number" disabled="true"></td>
+                                    <td class="wideField" colspan="2"><input class="form-control m-input" id="route" disabled="true"> </td>
+                                  </tr>
+                                  <tr>
+                                    <td class="label">City</td>
+                                    <!-- Note: Selection of address components in this example is typical.
+                                         You may need to adjust it for the locations relevant to your app. See
+                                         https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+                                    -->
+                                    <td class="wideField" colspan="3"><input class="form-control m-input" id="locality" disabled="true"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="label">State</td>
+                                    <td class="slimField"><input class="form-control m-input" id="administrative_area_level_1" disabled="true"></td>
+                                    <td class="label">Zip code</td>
+                                    <td class="wideField"><input class="form-control m-input" id="postal_code"  disabled="true"></td>
+                                  </tr>
+                                  <tr>
+                                    <td class="label">Country</td>
+                                    <td class="wideField" colspan="3"><input class="form-control m-input" id="country" disabled="true"></td>
+                                  </tr>
+                                </table>
+                              </div>
+                              <span class="m-form__help">
+                              Please enter the location
+                            </span>
+                            </div>
+
+                            <div class="col-lg-6">
+                              <label class="">
+                                Languages:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a language -- </option>
+                                  <option value="">French</option>
+                                  <option value="">English</option>
+                                  <option value="">Spanish</option>
+                                  <option value="">Italie</option>
+                                  <option value="">Portuguese</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the languages
+                            </span>
+                            </div>
+
+                          </div>
+                          <!--end::Form-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <strong class="m-section__sub">
+                      Interests and Activities:
+                    </strong>
+                    <div class="m-section__content">
+                      <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                        <div class="m-demo__preview">
+                          <!--begin::Form-->
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6">
+                              <label class="">
+                                Interests:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a interest -- </option>
+                                  <option value="">Sports</option>
+                                  <option value="">Individual sports</option>
+                                  <option value="">Race and hike</option>
+                                  <option value="">Computers and electronics</option>
+                                  <option value="">Consumer electronics</option>
+                                  <option value="">Electronic accessories</option>
+                                  <option value="">Sports</option>
+                                  <option value="">Individual sports</option>
+                                  <option value="">Cycling</option>
+                                  <option value="">Food and drinks</option>
+                                  <option value="">Cooking and recipes</option>
+                                  <option value="">Soups and stews</option>
+                                  <option value="">traveling</option>
+                                  <option value="">Tourist destinations</option>
+                                  <option value="">Historic sites and buildings</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the interests
+                            </span>
+                            </div>
+
+                            <div class="col-lg-6">
+                              <label class="">
+                                Activities:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a activity -- </option>
+                                  <option value="">Accounting</option>
+                                  <option value="">Finance</option>
+                                  <option value="">Administrative</option>
+                                  <option value="">IT and Development</option>
+                                  <option value="">Design</option>
+                                  <option value="">Customer service</option>
+                                  <option value="">Educator & Education</option>
+                                  <option value="">Corporate training</option>
+                                  <option value="">Engineering</option>
+                                  <option value="">Construction</option>
+                                  <option value="">Production</option>
+                                  <option value="">Healthcare</option>
+                                  <option value="">Pharmaceuticals</option>
+                                  <option value="">Hospitality</option>
+                                  <option value="">Travel & Tourism</option>
+                                  <option value="">Human Resources (HR)</option>
+                                  <option value="">Law enforcement / Security</option>
+                                  <option value="">Legal</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the activities
+                            </span>
+                            </div>
+
+                          </div>
+                          <!--end::Form-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <strong class="m-section__sub">
+                      Technology:
+                    </strong>
+                    <div class="m-section__content">
+                      <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                        <div class="m-demo__preview">
+                          <!--begin::Form-->
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6">
+                              <label class="">
+                                Devices category:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a device category -- </option>
+                                  <option value="">Desktop</option>
+                                  <option value="">Mobile</option>
+                                  <option value="">Tablet</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the devices category
+                            </span>
+                            </div>
+                            <div class="col-lg-6">
+                              <label class="">
+                                Operating systems:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a operating system -- </option>
+                                  <option value="">Windows</option>
+                                  <option value="">IOS</option>
+                                  <option value="">Android</option>
+                                  <option value="">Macinthosh</option>
+                                  <option value="">Linux</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the operating systems
+                            </span>
+                            </div>
+                          </div>
+
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6">
+                              <label class="">
+                                Navigators:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a navigator -- </option>
+                                  <option value="">Chrome</option>
+                                  <option value="">Firefox</option>
+                                  <option value="">Safari</option>
+                                  <option value="">Internet Explorer</option>
+                                  <option value="">Android Browser</option>
+                                  <option value="">Opera</option>
+                                  <option value="">Mozilla Comptabile Agent</option>
+                                  <option value="">Safari (in-app)</option>
+                                  <option value="">Opera Mini</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the navigators
+                            </span>
+                            </div>
+                            <div class="col-lg-6">
+                              <label class="">
+                                WebMails:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a WebMail -- </option>
+                                  <option value="">Gmail</option>
+                                  <option value="">Outlook Mail</option>
+                                  <option value="">	Yahoo Mail</option>
+                                  <option value="">AOL Mail</option>
+                                  <option value="">Yandex Mail</option>
+                                  <option value="">GMX</option>
+                                  <option value="">Proton</option>
+                                  <option value="">ProtonMail</option>
+                                  <option value="">Zoho Mail</option>
+                                  <option value="">Mail.com</option>
+                                  <option value="">Tutanota</option>
+                                </select>
+                                <input type="text" name="tags" value="" data-role="tagsinput" id="tags" class="form-control m-input m-input--air">
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the WebMails
+                            </span>
+                            </div>
+                          </div>
+
+                          <!--end::Form-->
+                        </div>
+                      </div>
+                    </div>
+
+                    <strong class="m-section__sub">
+                      Behavior:
+                    </strong>
+                    <div class="m-section__content">
+                      <div class="m-demo" data-code-preview="true" data-code-html="true" data-code-js="false">
+                        <div class="m-demo__preview">
+                          <!--begin::Form-->
+                          <div class="form-group m-form__group row">
+                            <div class="col-lg-6">
+                              <label class="">
+                                Engagement of the subscriber:
+                              </label>
+                              <div class="input-group ">
+                                <select class="form-control fieldSelect" name="selectLocation">
+                                  <option disabled selected value> -- select a Engagement -- </option>
+                                  <option value="">New subscriber</option>
+                                  <option value="">Active subscriber</option>
+                                  <option value="">Innactive subscriber</option>
+                                </select>
+                                <!--<button class="btn btn-danger btn-remove btn-sm" type="button">
+                                  <span class="fa fa-minus fa-lg});"></span>
+                                </button> -->
+                              </div>
+                              <span class="m-form__help">
+                              Please select the engagement of the subscriber
+                            </span>
+                            </div>
+                          </div>
+
+                          <!--end::Form-->
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </div>
+                <!--end: Form Body -->
+                <!--begin: Form Actions -->
+                <div class="m-portlet__foot m-portlet__foot--fit">
+                  <div class="m-form__actions">
+                    <button type="reset" class="btn btn-secondary">
+                      Cancel
+                    </button>
+                    <button href="#" type="submit" class="btn m-btn m-btn--custom m-btn--icon btn-brand" data-wizard-action="next">
+															<span>
+																<span>
+																	Save &amp; Continue
+																</span>
+																&nbsp;&nbsp;
+																<i class="la la-arrow-right"></i>
+															</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!--end: Form Actions -->
+              </form>
+            </div>
+            <!--end: Form Wizard Form-->
+          </div>
+          <!--end: Form Wizard-->
+        </div>
+        <!--End::Main Portlet-->
+      </div>
+    </div>
+    <!--End::Section-->
+  </div>
+</div>
+<% block('localScripts', '<script src="/js/segments/new-step2.js" type="text/javascript"></script>'+
+'<script src="/bootstrap-tagsinput-latest/bootstrap-tagsinput.js" type="text/javascript"></script>'+
+'<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqGOiwCsVtnszSh6YzRGa_JStU9be-a9E&libraries=places&callback=initAutocomplete" async defer></script>') %>
+
+<% block('localStyles', '<link rel="stylesheet"  href="/bootstrap-tagsinput-latest/bootstrap-tagsinput.css">') %>
+
+
+
+
