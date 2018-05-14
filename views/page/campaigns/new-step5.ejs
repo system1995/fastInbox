@@ -147,7 +147,7 @@
             1) Use m-form--label-align-left class to alight the form input lables to the right
             2) Use m-form--state class to highlight input control borders on form validation
             -->
-              <form class="m-form m-form--label-align-left- m-form--state-" id="m_form" novalidate="novalidate">
+              <form class="m-form m-form--label-align-left- m-form--state-" action="/campaigns/create" method="post" id="m_form" novalidate="novalidate">
                 <!--begin: Form Body -->
                 <div class="m-portlet__body">
                   <div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_4">
@@ -181,7 +181,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								CampaignName
+																								<%= campaign.name %>
 																							</span>
                                     </div>
                                   </div>
@@ -191,7 +191,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								CampaignObject
+																								<%= campaign.object %>
 																							</span>
                                     </div>
                                   </div>
@@ -202,7 +202,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								CampaignNameSender
+																								<%= campaign.nameSender %>
 																							</span>
                                     </div>
                                   </div>
@@ -213,7 +213,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								CampaignEmailSender
+																								<%= campaign.emailSender %>
 																							</span>
                                     </div>
                                   </div>
@@ -224,7 +224,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								CampaignLanguage
+																								<%= campaign.language %>
 																							</span>
                                     </div>
                                   </div>
@@ -235,7 +235,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								CampaignClient
+																								<%= campaign.client %>
 																							</span>
                                     </div>
                                   </div>
@@ -246,7 +246,7 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-																								tag1,tag2,tag3
+																								<%= campaign.tags[0] %>
 																							</span>
                                     </div>
                                   </div>
@@ -291,7 +291,7 @@
                                     </h4>
                                   </div>
                                   <%if(req.query.type=='email') {%>
-                                  <img src="https://s3.amazonaws.com/community-templates/production/87af2282da612d6d3aa91f783ad67921ff0a4b81.png" class="img-fluid" alt="Responsive image">
+                                  <img src="/files/campaigns/<%=campaign.id%>/screenShot.jpg" class="img-responsive" style="" alt="Responsive image">
                                   <%} else {%>
                                   <textarea class="form-control m-input" id="exampleTextarea" rows="3" disabled> fdsfsfdsfdsfdsfdsfds</textarea>
                                   <%}%>
@@ -327,8 +327,11 @@
                                     </label>
                                     <div class="col-xl-8 col-lg-8">
 																							<span class="m-form__control-static">
-                                                List1 </br>
-                                                List2
+                                                <%lists.forEach(function(list) { %>
+                                                  <%=list.name%> </br>
+                                                <%
+                                                });
+                                                %>
 																							</span>
                                     </div>
                                   </div>
@@ -358,7 +361,8 @@
                                       Campaign timing
                                     </h4>
                                   </div>
-                                  <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaign" action="/campaigns/new/?type=email&step=2" method="POST" enctype="multipart/form-data">
+                                  <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaign" action="/campaigns/create" method="POST" enctype="multipart/form-data">
+                                    <input id="idCampaign" name="idCampaign" type="hidden" value="<%=campaign.id %>">
                                     <div class="m-form__group form-group">
                                       <div class="m-radio-list" id="radio">
                                         <label class="m-radio m-radio--state-success">
@@ -388,7 +392,7 @@
 
 
 
-                                  </form>
+
                                 </div>
                               </div>
                               <!--end::Content-->
@@ -423,7 +427,7 @@
                         </a>
                       </div>
                       <div class="col-lg-4 m--align-right">
-                        <a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon" data-wizard-action="next">
+                        <button href="#"  class="btn btn-primary m-btn m-btn--custom m-btn--icon" data-wizard-action="next">
 																	<span>
 																		<i class="la la-check"></i>
 																		&nbsp;&nbsp;
@@ -431,14 +435,14 @@
 																			Submit
 																		</span>
 																	</span>
-                        </a>
+                        </button>
                       </div>
                       <div class="col-lg-2"></div>
                     </div>
                   </div>
                 </div>
                 <!--end: Form Actions -->
-              </form>>
+              </form>
             </div>
             <!--end: Form Wizard Form-->
           </div>

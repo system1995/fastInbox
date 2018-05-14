@@ -18,32 +18,32 @@ new Chart(document.getElementById("myChart"), {
       newDate(9),
     ],
     datasets: [{
-      data: [86,114,106,106,107,111,133,221,783,2478],
+      data: [8,1,0,2,1,0,3,1,0,0],
       label: "Delivered",
       borderColor: "#3e95cd",
       fill: false
     }, {
-      data: [282,350,411,502,635,809,947,1402,3700,5267],
+      data: [2,0,0,0,0,0,0,1,0,0],
       label: "Open",
       borderColor: "#8e5ea2",
       fill: false
     }, {
-      data: [168,170,178,190,203,276,408,547,675,734],
+      data: [0,1,0,0,0,0,0,0,0,0],
       label: "Clicked",
       borderColor: "#3cba9f",
       fill: false
     }, {
-      data: [40,20,10,16,24,38,74,167,508,784],
+      data: [9,0,0,0,0,0,0,0,0,0],
       label: "Blocked",
       borderColor: "#ff2303",
       fill: false
     }, {
-      data: [6,3,2,2,7,26,82,172,312,433],
+      data: [0,0,0,0,0,0,0,0,0,0],
       label: "Spam",
       borderColor: "#0e0008",
       fill: false
     }, {
-      data: [3,5,5,12,45,21,43,172,312,433],
+      data: [4,0,0,0,0,0,0,0,0,0],
       label: "Bounce",
       borderColor: "#e5925d",
       fill: false
@@ -309,7 +309,7 @@ var jQVMapDemo = function() {
           '</table>'
         ].join(""); */
        var html=countryName+
-       '<br> Total :23 <br> Delivered :23 <br> Open :23 <br> Clicked :23 <br> Blocked :23 <br> Spam :23 <br> Bounce :23';
+       '<br> Total :29 <br> Delivered :16 <br> Open :3 <br> Clicked :1 <br> Blocked :9 <br> Spam :0 <br> Bounce :4';
         label[0].innerHTML = html;
       }
     };

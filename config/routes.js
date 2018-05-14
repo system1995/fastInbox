@@ -104,6 +104,10 @@ module.exports.routes = {
   /***************Campaign*************************/
   '/campaigns': 'CampaignController.index',
   '/campaigns/new': 'CampaignController.new',
+  'post /campaigns/saveEmailingCampaign': 'CampaignController.saveEmailingCampaign',
+  'post /campaigns/create': 'CampaignController.create',
+  'post /campaigns/spamCheck': 'CampaignController.spamCheck',
+  'post /campaigns/campaignPreview': 'CampaignController.campaignPreview',
   /***************Profile********************************/
   'profile': 'ProfileController.index',
   '/profile/edit': 'ProfileController.edit',

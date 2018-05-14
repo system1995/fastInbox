@@ -48,7 +48,7 @@ var FormControls = function () {
 
       //display error alert on form submit
       invalidHandler: function(event, validator) {
-        mApp.scrollTo("#m_form_subscriber");
+        mApp.scrollTo("#m_form_campaign");
         swal({
           "title": "",
           "text": "There are some errors in your submission. Please correct them.",

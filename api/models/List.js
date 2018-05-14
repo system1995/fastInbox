@@ -19,6 +19,11 @@ module.exports = {
       collection: 'Segment',
       via :'lists',
     },
+    campaigns : {
+      collection: 'Campaign',
+      via :'lists',
+    },
+
     imports : {
       collection: 'Import',
       via : 'lists',

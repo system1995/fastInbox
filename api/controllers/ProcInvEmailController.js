@@ -32,42 +32,37 @@ module.exports = {
             return res.serverError(err);
           }
           var invalidSubscribers = [];
-          subscribers.forEach(function(subscriber)
-          {
-            invalidSubscribers.push(subscriber);
+          subscribers.forEach(function(subscriber) {
             if(typeof subscriber.email == 'undefined' || !subscriber.email) subscriber.reason="Empty email";
             else if(require('isemail').validate(subscriber.email)==false) subscriber.reason="Syntaxe Error : RFCs 5321, 5322";
-            else if(module.exports.checkDomainExist((subscriber.email).split("@")[1])) subscriber.reason="Non existence domain";
-            else if(module.exports.checkEmailExist(subscriber.email)) subscriber.reason="Non existence email";
-            else invalidSubscribers.pop();
+            else if(module.exports.checkDomainExist((subscriber.email).split("@")[1])==false) subscriber.reason = "No existence domain";
+            else if(module.exports.checkEmailExist(subscriber.email)==false) subscriber.reason = "No existence email";
+            if (typeof subscriber.reason != "undefined") invalidSubscribers.push(subscriber);
           });
+          console.log("---------------->j'ai checker all emails");
           res.view('page/procInvEmail/new-step2', {subscribers: invalidSubscribers});
         });
       }
     }
   },
 
-  checkDomainExist:function (domain) {
-    require ('dns').resolve4( domain, function (err, domain) {
-      //console.log(err);
-      if (err) return false;
-      return true;
-    })
+  checkDomainExist:function (hostname) {
+    var dnsSync = require('dns-sync');
+    if(dnsSync.resolve(hostname)==null)
+    {
+      console.log(hostname+"--->Domain Not Exist");
+      return false;
+    }
+    console.log(hostname+"--->Domain Exist");
+    return true;
   },
 
   checkEmailExist:function (email) {
-    var verifier = require('email-exist');
-    verifier.verify(email, function (err, info) {
-      if (err) {
-        //console.log(err);
-        return true;
-      } else {
-        return info.success;
-        //console.log( "Success: " + info.success );
-        //console.log( "Info: " + info.info );
-        //console.log( "Response from smtp: " + info.response );
-      }
-    });
+    var url = "https://api.zerobounce.net/v1/validate?apikey=8c0979e6737c4f8783b040dbcb9afec9&email="+email
+    var request = require('sync-request');
+    var res = request('GET', url);
+    if(JSON.parse(res.body.toString('utf-8')).status!='Valid') return false;
+    return true;
   },
 
   destroy:function (req, res) {
@@ -77,5 +72,4 @@ module.exports = {
       return res.redirect("/process_invalid_emails/");
     });
   }
-
 }

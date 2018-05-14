@@ -267,25 +267,37 @@ $.get(templateEmail, function(data, status){
 });
 
 $( "#save" ).click(function() {
-  if($( "#m_form_emailTemplate" ).valid()) {
-    $.post(postLink, {
+    console.log($("#idCampaign").val());
+    console.log(editor.getCss());
+    $.post("/campaigns/saveEmailingCampaign", {
+      css: editor.getCss(),
       html: editor.getHtml(),
-      name: $("#name").val(),
-      category: $("#category").val(),
-      description: $("#description").val()
+      idCampaign: $("#idCampaign").val(),
     }).done(function (result) {
-      window.location.href = "/emailsTemplate";
+      $( "#m_form_campaignEmail").submit();
     });
-  }
-  else {
-    mApp.scrollTo("#m_form_emailTemplate");
-    swal({
-      "title": "",
-      "text": "There are some errors in your submission. Please correct them.",
-      "type": "error",
-      "confirmButtonClass": "btn btn-secondary m-btn m-btn--wide"
-    });
-  }
+});
+
+
+$( "#checkSpam" ).click(function() {
+  $.post("/campaigns/spamCheck", {
+    html: editor.getHtml(),
+  }).done(function (result) {
+    $('#score').val(result.score);
+    $('#taSPAM').append(result.scoreDescription);
+    $('#taSPAM').append(result.report);
+    $('#m_modal_5').modal('show');
+  });
+});
+
+
+$( "#campaignPreview" ).click(function() {
+  $.post("/campaigns/campaignPreview", {
+    css: editor.getCss(),
+    html: editor.getHtml(),
+  }).done(function (result) {
+    window.open('/files/campaigns/test.html','_blank');
+  });
 });
 
 

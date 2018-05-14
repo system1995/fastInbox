@@ -149,6 +149,7 @@
             -->
               <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaign" action="/campaigns/new/?type=email&step=3" method="POST" enctype="multipart/form-data">
                 <!--begin: Form Body -->
+                <input id="idCampaign" name="idCampaign" type="hidden" value="<%=campaign.id %>">
                 <div class="m-portlet__body">
                   <div class="m-form__content">
                       <div class="m-alert m-alert--icon alert alert-warning m--hide" role="alert" id="m_form_2_msg">

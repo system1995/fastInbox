@@ -41,10 +41,14 @@ module.exports = {
     },
     lists : {
       collection: 'List',
+      via:'campaigns'
     },
     segments : {
       collection: 'Segment',
     },
+    emailTemplate: {
+      model: 'EmailTemplate'
+    }
   }
 };
 

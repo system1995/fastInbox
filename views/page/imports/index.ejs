@@ -116,7 +116,7 @@
                 </td>
                 <td>
                   <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: <%= Import.progress %>%;" value="<%= Import.progress %>" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><%= Import.progress %>%</div>
+                    <div class="progress-bar" role="progressbar" style="width: <%=parseInt(eval(Import.progress)*100) %>%;" value="<%=parseInt(eval(Import.progress)*100) %>" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"><%= parseInt(eval(Import.progress)*100) %>%</div>
                   </div>
                 </td>
                 <td>

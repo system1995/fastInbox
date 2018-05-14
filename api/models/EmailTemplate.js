@@ -22,5 +22,10 @@ module.exports = {
     templateCategory : {
       model: 'TemplateCategory'
     },
+    // Add a reference to Pets
+    campaigns: {
+      collection: 'Campaign',
+      via: 'emailTemplate'
+    }
   }
 };

@@ -147,17 +147,19 @@
                         </div>
                       </div>
 
-                      <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaign" action="/campaigns/new/?type=email&step=4" method="POST">
-                        <button class="btn m-btn btn-danger">
+                      <form class="m-form m-form--label-align-left- m-form--state-" id="m_form_campaignEmail" action="/campaigns/new/?type=email&step=4" method="POST">
+                        <input id="idCampaign" name="idCampaign" type="hidden" value="<%=campaign %>">
+                        <input id="campaignHTML" name="campaignHTML" type="hidden">
+                        <button class="btn m-btn btn-danger" id="checkSpam" type="button">
 															<span>
 																<span>
-																	Check spam keywords &nbsp;
+																	Check spam &nbsp;
 																</span>
 																&nbsp;&nbsp;
 																<i class="flaticon-signs-1"></i>
 															</span>
                         </button>
-                        <button class="btn m-btn btn-accent">
+                        <button class="btn m-btn btn-accent" type="button" id="campaignPreview">
 															<span>
 																<span>
 																	Preview your campaign
@@ -168,7 +170,7 @@
                         </button>
                           <div class="m-portlet__foot m-portlet__foot--fit">
                             <div class="m-form__actions">
-                              <button type="submit" id="save" class="btn m-btn m-btn--custom m-btn--icon btn-brand">
+                              <button  id="save" type="button" class="btn m-btn m-btn--custom m-btn--icon btn-brand">
 															<span>
 																<span>
 																	Save &amp; Continue
@@ -334,7 +336,7 @@
                     <button type="reset" class="btn btn-secondary">
                       Cancel
                     </button>
-                    <button href="#" type="submit" class="btn m-btn m-btn--custom m-btn--icon btn-brand" data-wizard-action="next">
+                    <button href="#"  type="submit" class="btn m-btn m-btn--custom m-btn--icon btn-brand" data-wizard-action="next">
 															<span>
 																<span>
 																	Save &amp; Continue
@@ -362,6 +364,37 @@
 </div>
 <div id="gjs" style="height:0px; "></div>
 
+
+<div class="modal fade" id="m_modal_5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          SPAM Check -postmarkSPAMCheck-
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">
+												&times;
+											</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="exampleInputEmail1">
+          Score
+        </label>
+        <input class="form-control m-input" id="score"  aria-describedby="emailHelp" placeholder="" disabled type="email">
+
+        <label for="exampleTextarea">
+          Detail
+        </label>
+        <textarea class="form-control m-input" id="taSPAM" disabled="disabled" rows="3"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <%if(req.query.type=='email') {%>
