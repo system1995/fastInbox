@@ -114,11 +114,19 @@ module.exports.routes = {
   '/profile/editImage': 'ProfileController.editImage',
   /******************Settings********************************/
   '/settings_cron': 'SettingController.cronIndex',
+  '/settings_servers': 'SettingController.serversIndex',
+  '/settings_servers/new': 'SettingController.serversNew',
+  '/settings_servers/create': 'SettingController.serversCreate',
   /******************Report*****************************/
   '/reports': 'ReportController.index',
-
   /*****************Segment*********************/
   '/segments': 'SegmentController.index',
   '/segments/new': 'SegmentController.new',
   'post /segments/create': 'SegmentController.create',
+  /**************Support**************************/
+  '/support':'SupportController.index',
+  '/support/new':'SupportController.new',
+  '/support/create':'SupportController.create',
+  '/support/ticket':'SupportController.ticket',
+  '/support/ticket/new':'SupportController.ticketNew',
 };

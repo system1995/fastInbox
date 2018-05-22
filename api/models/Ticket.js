@@ -13,12 +13,13 @@ module.exports = {
     txt : {
       type: 'string',
     },
-    status : {
-      type: 'boolean',
-    },
     user:{
       model:'User',
-      columnName: 'id'
+    },
+
+    // Add a reference to User
+    campaign: {
+      model: 'Campaign'
     },
 
     /* array of json Object

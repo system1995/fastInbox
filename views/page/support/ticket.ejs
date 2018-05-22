@@ -1,0 +1,153 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title ">
+          Support
+        </h3>
+      </div>
+      <div>
+      </div>
+    </div>
+  </div>
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <!--Begin::Section-->
+    <div class="row">
+      <div class="col-lg-12">
+        <!--begin::Portlet-->
+        <div class="m-portlet m-portlet--full-height ">
+          <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                <h3 class="m-portlet__head-text">
+                  Ticket <%=ticket.object%>
+                </h3>
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item m-dropdown m-dropdown--inline m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push" data-dropdown-toggle="hover" aria-expanded="true">
+                  <a href="#" class="m-portlet__nav-link m-portlet__nav-link--icon m-portlet__nav-link--icon-xl m-dropdown__toggle">
+                    <i class="la la-ellipsis-h m--font-brand"></i>
+                  </a>
+                  <div class="m-dropdown__wrapper">
+                    <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                    <div class="m-dropdown__inner">
+                      <div class="m-dropdown__body">
+                        <div class="m-dropdown__content">
+                          <ul class="m-nav">
+                            <li class="m-nav__item">
+                              <a href="" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-share"></i>
+                                <span class="m-nav__link-text">
+																					Activity
+																				</span>
+                              </a>
+                            </li>
+                            <li class="m-nav__item">
+                              <a href="" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-chat-1"></i>
+                                <span class="m-nav__link-text">
+																					Messages
+																				</span>
+                              </a>
+                            </li>
+                            <li class="m-nav__item">
+                              <a href="" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-info"></i>
+                                <span class="m-nav__link-text">
+																					FAQ
+																				</span>
+                              </a>
+                            </li>
+                            <li class="m-nav__item">
+                              <a href="" class="m-nav__link">
+                                <i class="m-nav__link-icon flaticon-lifebuoy"></i>
+                                <span class="m-nav__link-text">
+																					Support
+																				</span>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="m-portlet__body">
+            <div class="m-widget3">
+              <% _.each(ticket.message, function (message,i) { %>
+              <div class="m-widget3__item">
+                <div class="m-widget3__header">
+                  <div class="m-widget3__user-img">
+                    <img class="m-widget3__img" src="/files/users/<%=message.user.id%>/<%=message.user.image%>" alt="">
+                  </div>
+                  <div class="m-widget3__info">
+														<span class="m-widget3__username">
+															<%=message.user.username%>
+														</span>
+                    <br>
+                    <span class="m-widget3__time">
+															<%=message.date%>
+														</span>
+                  </div>
+                  <span class="m-widget3__status m--font-info">
+													</span>
+                </div>
+                <div class="m-widget3__body">
+                  <p class="m-widget3__text">
+                    <%=message.message%>
+                  </p>
+                </div>
+              </div>
+              <%})%>
+            </div>
+            <form class="m-form m-form--state m-form--fit m-form--label-align-right" id="m_form_ticket" action="/support/ticket/new" method="POST">
+              <input type="hidden" value="<%=ticket.id%>" name="id" id="id">
+              <div class="m-portlet__body">
+                <div class="m-form__content">
+                  <div class="m-alert m-alert--icon alert alert-warning m--hide" role="alert" id="m_form_2_msg">
+                    <div class="m-alert__icon">
+                      <i class="la la-warning"></i>
+                    </div>
+                    <div class="m-alert__text">
+                      Oh snap! Change a few things up and try submitting again.
+                    </div>
+                    <div class="m-alert__close">
+                      <button type="button" class="close" data-close="alert" aria-label="Close"></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group m-form__group">
+                  <label for="name">
+                    Reply *
+                  </label>
+                  <textarea class="form-control m-input m-input--air" id="message" name="message"  aria-describedby="fullNameHelp" placeholder="Enter Message" type="text"></textarea>
+                </div>
+              </div>
+              <div class="m-portlet__foot m-portlet__foot--fit">
+                <div class="m-form__actions">
+                  <button type="submit" class="btn btn-brand">
+                    Submit
+                  </button>
+                  <button type="reset" class="btn btn-secondary">
+                    Cancel
+                  </button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+        </div>
+        <!--end::Portlet-->
+      </div>
+    </div>
+    <!--End::Section-->
+  </div>
+</div>
+<% block('localScripts', '<script src="/js/support/new.js" type="text/javascript"></script>') %>

@@ -178,7 +178,13 @@
     <!--End::Section-->
   </div>
 </div>
-
+<script>
+  var GAStats='<%=GAStats%>'.split(",");
+  var newArr = [];
+  while(GAStats.length) newArr.push(GAStats.splice(0,3));
+  GAStats=newArr;
+  console.log(GAStats);
+</script>
 
 <% block('localStyles', '<link rel="stylesheet" href="/styles/reports/index.css">'+
   '<link href="/vendors/custom/jqvmap/jqvmap.bundle.css" rel="stylesheet" type="text/css" />') %>

@@ -31,8 +31,8 @@ module.exports = {
       enum: ['sent','scheduled','suspended','running','arshived','drafts','deleted'], //min
       defaultsTo: 'drafts'
     },
-    SMTPServer:{
-      model:'SMTPServer',
+    server:{
+      model:'Server',
       unique: true
     },
     emailTemplate:{
@@ -48,6 +48,10 @@ module.exports = {
     },
     emailTemplate: {
       model: 'EmailTemplate'
+    },
+    tickets:{
+      collection: 'Ticket',
+      via:'campaign'
     }
   }
 };

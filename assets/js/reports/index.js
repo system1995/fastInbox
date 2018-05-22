@@ -308,8 +308,15 @@ var jQVMapDemo = function() {
           '</tr>',
           '</table>'
         ].join(""); */
+        let indexCountry=0,total=0;
+        for( indexCountry=0;indexCountry< GAStats.length; indexCountry++)
+        {
+          console.log(GAStats[indexCountry][0]+"="+countryName);
+          if(GAStats[indexCountry][0].includes(countryName)) break;
+        }
+       if(indexCountry!=GAStats.length) total=GAStats[indexCountry][1];
        var html=countryName+
-       '<br> Total :29 <br> Delivered :16 <br> Open :3 <br> Clicked :1 <br> Blocked :9 <br> Spam :0 <br> Bounce :4';
+       '<br> Total :'+total+' <br> Delivered :16 <br> Open :3 <br> Clicked :1 <br> Blocked :9 <br> Spam :0 <br> Bounce :4';
         label[0].innerHTML = html;
       }
     };

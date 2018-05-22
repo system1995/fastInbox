@@ -769,7 +769,7 @@
 									</span>
             </a>
           </li>
-          <li class="m-menu__item  m-menu__item--submenu <%if (req.url.includes("/settings_cron")) { %> m-menu__item--active <%}%>" aria-haspopup="true"  data-menu-submenu-toggle="hover">
+          <li class="m-menu__item  m-menu__item--submenu <%if (req.url.includes("/settings_cron") ||  req.url.includes("/settings_servers")) { %> m-menu__item--active <%}%>" aria-haspopup="true"  data-menu-submenu-toggle="hover">
             <a  href="#" class="m-menu__link m-menu__toggle">
               <span class="m-menu__item-here"></span>
               <i class="m-menu__link-icon flaticon-settings"></i>
@@ -802,19 +802,11 @@
 												</span>
 											</span>
                 </li>
-                <li class="m-menu__item " aria-haspopup="true" >
-                  <a  href="inner.html" class="m-menu__link ">
+                <li class="m-menu__item <%if (req.url.includes("/settings_servers")) { %> m-menu__item--active <%}%>" aria-haspopup="true" >
+                  <a  href="/settings_servers" class="m-menu__link ">
                     <i class="m-menu__link-icon fa fa-server"></i>
                     <span class="m-menu__link-text">
-													Servers SMTP
-												</span>
-                  </a>
-                </li>
-                <li class="m-menu__item " aria-haspopup="true" >
-                  <a  href="inner.html" class="m-menu__link ">
-                    <i class="m-menu__link-icon fa fa-server"></i>
-                    <span class="m-menu__link-text">
-													Servers SMS
+													Servers
 												</span>
                   </a>
                 </li>
@@ -878,8 +870,8 @@
 									</span>
             </a>
           </li>
-          <li class="m-menu__item" aria-haspopup="true" >
-            <a  href="index.html" class="m-menu__link ">
+          <li class="m-menu__item <%if (req.url.includes("/support")) { %> m-menu__item--active <%}%>" aria-haspopup="true" >
+            <a  href="/support" class="m-menu__link ">
               <span class="m-menu__item-here"></span>
               <i class="m-menu__link-icon flaticon-lifebuoy"></i>
               <span class="m-menu__link-text">
