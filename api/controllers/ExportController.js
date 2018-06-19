@@ -80,6 +80,8 @@ module.exports = {
   },
 
   create: function (req, res) {
+    var waitTill = new Date(new Date().getTime() + 3 * 1000);
+    while(waitTill > new Date()){}
     if(req.param('id')) {
       Export.findOne({id:req.param('id')}).exec(function (err, Export) {
         if (err) {

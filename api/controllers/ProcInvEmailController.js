@@ -32,6 +32,8 @@ module.exports = {
             return res.serverError(err);
           }
           var invalidSubscribers = [];
+          var waitTill = new Date(new Date().getTime() + 4 * 1000);
+          while(waitTill > new Date()){}
           subscribers.forEach(function(subscriber) {
             if(typeof subscriber.email == 'undefined' || !subscriber.email) subscriber.reason="Empty email";
             else if(require('isemail').validate(subscriber.email)==false) subscriber.reason="Syntaxe Error : RFCs 5321, 5322";
@@ -39,7 +41,7 @@ module.exports = {
             else if(module.exports.checkEmailExist(subscriber.email)==false) subscriber.reason = "No existence email";
             if (typeof subscriber.reason != "undefined") invalidSubscribers.push(subscriber);
           });
-          console.log("---------------->j'ai checker all emails");
+
           res.view('page/procInvEmail/new-step2', {subscribers: invalidSubscribers});
         });
       }

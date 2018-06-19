@@ -21,6 +21,7 @@ module.exports = {
   },
 
   create: function(req,res) {
+
     var params = _.extend(req.query || {}, req.params || {}, req.body || {});
 
     EmailTemplate.create(params, function importCreated (err, emailsTemplate) {
@@ -31,7 +32,9 @@ module.exports = {
         dirname:'../../assets/files/emailsTemplate/'+emailsTemplate.id},function(err,files){
         if (err) return res.serverError(err);
         emailsTemplate.path=files[0].fd;
-        emailsTemplate.save(function(err){ console.log(err)});
+        emailsTemplate.save(function(err){
+          //console.log(err)
+           });
         module.exports.screenTemplateEmail(emailsTemplate.path,emailsTemplate.id);
         res.redirect("/emailsTemplate/");
       });
@@ -89,7 +92,8 @@ module.exports = {
       fs = require('fs');
       fs.writeFile(emailTemplate.path,req.param('html'), function(err) {
         if(err) {
-          return console.log(err);
+          return ;
+          //console.log(err);
         }
         module.exports.screenTemplateEmail(emailTemplate.path,emailTemplate.id);
         res.json({});
@@ -103,7 +107,8 @@ module.exports = {
     EmailTemplate.destroy({id:id}).exec(function (err){
       if (err) {return res.negotiate(err);}
       require('rmdir')(sails.config.appPath+'/assets/files/emailsTemplate/'+id, function (err, dirs, files) {
-        if(err) return console.log(err);
+        if(err) return;
+        //console.log(err);
       });
       return res.redirect("/emailsTemplate/");
     });

@@ -124,12 +124,12 @@ module.exports = {
           Import.progress = subscribers.length + '/' + subscribers.length;
         }
         else Import.progress = (currentLine+10) + '/' + subscribers.length;
-        console.log('Cron Job --> Import :'+Import.name+'Progress : '+Import.progress);
+        //console.log('Cron Job --> Import :'+Import.name+'Progress : '+Import.progress);
         Import.save();
       });
       var date = new Date((new Date()).getTime() + (subscribers.length/10)*60000);
       schedule.scheduleJob(date, function(){
-        console.log('Finish :) Cron Job --> Import :'+Import.name);
+        //console.log('Finish :) Cron Job --> Import :'+Import.name);
         j.cancel();
       });
       res.redirect("/subscribers/");
@@ -146,7 +146,7 @@ module.exports = {
       for (var key in params) {
         newSubscriber[params[key]] = subscriber[Object.keys(subscriber)[parseInt(key.slice(-1))]];
       }
-      console.log(lists);
+      //console.log(lists);
       Subscriber.create(Object.assign(newSubscriber, {
         status: 'active',
         lists: lists

@@ -31,9 +31,7 @@ module.exports = {
             }
             res.view('page/campaigns/new-step2', {emailsTemplate: emailsTemplate,campaign:createdCampaign});
           });
-
         });
-
       }
       else {
         res.view('page/campaigns/new-step3');
@@ -110,9 +108,6 @@ module.exports = {
           module.exports.sendEmail(subscriber.email, sails.config.appPath+"\\assets\\files\\campaigns\\"+campaign.id+"\\campaign.html");
         });
       });
-
-
-
       return res.json({});
     });
 
@@ -184,8 +179,28 @@ module.exports = {
       }
     });
     return res.json({});
+  },
 
+  sendWithAmazon:function () {
+    var ses = require('node-ses')
+      , client = ses.createClient({ key: 'key', secret: 'secret' });
+    client.sendEmail({
+      to: 'aaron.heckmann+github@gmail.com'
+      , from: 'somewhereOverTheR@inbow.com'
+      , cc: 'theWickedWitch@nerds.net'
+      , bcc: ['canAlsoBe@nArray.com', 'forrealz@.org']
+      , subject: 'greetings'
+      , message: 'your <b>message</b> goes here'
+      , altText: 'plain text'
+    }, function (err, data, res) {
+      // ...
+    });
+    client.sendRawEmail({
+      from : 'somewhereOverTheR@inbow.com'
+      ,rawMessage: rawMessage
+      }, function (err, data, res) {
+      // ...
+    });
   }
-
 };
 
